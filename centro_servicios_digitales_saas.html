@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro de Servicios Digitales - Papeleria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-body: #0f0f17;
+  --bg-card: rgba(20,20,29,.75);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent: #00f0ff;
+  --accent-purple: #a855f7;
+  --border: rgba(255,255,255,0.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  font-family:'Inter',sans-serif;
+  color:var(--text-primary);
+  background:var(--bg-body);
+}
+#matrix {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+  will-change:transform;
+}
+.content {
+  position:relative;
+  z-index:1;
+}
+header {
+  text-align:center;
+  padding:1.4rem 1rem 1rem;
+  animation: fadeInDown .8s ease;
+}
+.logo {
+  font-size:2.6rem;
+  font-weight:900;
+  letter-spacing:-0.5px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+.tagline {
+  margin-top:.3rem;
+  color:var(--text-secondary);
+  font-size:1rem;
+  letter-spacing:.3px;
+}
+@keyframes glowPulse {
+  0%,100% { filter: drop-shadow(0 0 6px rgba(0,240,255,.15)); }
+  50% { filter: drop-shadow(0 0 12px rgba(168,85,247,.25)); }
+}
+@keyframes fadeInDown {
+  from { opacity:0; transform: translateY(-5px); }
+  to { opacity:1; transform: translateY(0); }
+}
+nav.main-nav {
+  display:flex;
+  justify-content:center;
+  gap:.6rem;
+  padding:.7rem 1rem;
+  position:sticky;
+  top:0;
+  background:rgba(10,10,15,.75);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  z-index:50;
+  animation: fadeInDown .8s ease;
+}
+nav.main-nav a {
+  color:var(--text-secondary);
+  text-decoration:none;
+  font-weight:500;
+  font-size:.9rem;
+  padding:.5rem 1rem;
+  border-radius:999px;
+  border:1px solid transparent;
+  transition:all .25s ease;
+  cursor:pointer;
+}
+nav.main-nav a:hover, nav.main-nav a.active {
+  color:var(--accent);
+  border-color:rgba(0,240,255,.35);
+  background:rgba(0,240,255,.08);
+  box-shadow:0 0 20px rgba(0,240,255,.15);
+}
+section {
+  max-width:1200px;
+  margin:0 auto;
+  padding:1.6rem 1rem 2.2rem;
+}
+h2.section-title {
+  font-size:1.7rem;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:.5rem;
+  background:linear-gradient(135deg,#fff,rgba(255,255,255,.85));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+p.section-subtitle {
+  text-align:center;
+  color:var(--text-secondary);
+  margin-bottom:1.6rem;
+}
+.grid {
+  display:grid;
+  gap:1.1rem;
+}
+.services {
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.card {
+  background:rgba(20,20,29,.8);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:1.3rem;
+  transition:all .35s ease;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  animation: fadeInUp .7s ease backwards;
+  will-change:transform,opacity;
+}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.1s}
+.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.2s}
+.card:nth-child(5){animation-delay:.25s}
+.card:nth-child(6){animation-delay:.3s}
+.card:nth-child(7){animation-delay:.35s}
+@keyframes fadeInUp {
+  from { opacity:0; transform: translateY(10px); }
+  to { opacity:1; transform: translateY(0); }
+}
+@keyframes barPulse {
+  0%,100% { opacity:.9; transform: scaleY(1); transform-origin: bottom; }
+  50% { opacity:1; transform: scaleY(1.03); transform-origin: bottom; }
+}
+.card::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 0%, rgba(0,240,255,.08), transparent 50%);
+  opacity:0;
+  transition:opacity .35s ease;
+}
+.card:hover::before { opacity:1; }
+.card:hover {
+  border-color:rgba(0,240,255,.5);
+  transform:translateY(-5px) scale(1.01);
+  box-shadow:0 15px 30px rgba(0,0,0,.4), 0 0 15px rgba(0,240,255,.12);
+}
+.card-header {
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  margin-bottom:.7rem;
+  position:relative;
+  z-index:1;
+}
+.card-icon {
+  font-size:2.2rem;
+  filter: drop-shadow(0 0 8px rgba(0,240,255,.35));
+}
+.card-title {
+  font-weight:700;
+  font-size:1.05rem;
+}
+.card p {
+  color:var(--text-secondary);
+  font-size:.92rem;
+  line-height:1.6;
+  position:relative;
+  z-index:1;
+}
+.card .features {
+  margin-top:.7rem;
+  padding-left:1.2rem;
+  color:var(--text-secondary);
+  font-size:.87rem;
+  line-height:1.8;
+  position:relative;
+  z-index:1;
+}
+.card .features li::marker { color:var(--accent); }
+.contact-cta {
+  text-align:center;
+  margin:1.6rem 0;
+}
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.9rem 1.6rem;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  color:#0a0a0f;
+  font-weight:800;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:all .3s ease;
+  box-shadow:0 10px 25px rgba(0,240,255,.25);
+  position:relative;
+  overflow:hidden;
+}
+.btn::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.25),transparent 60%);
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.btn:hover::after { opacity:1; }
+.btn:hover {
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 18px 35px rgba(168,85,247,.35);
+}
+.footer {
+  text-align:center;
+  padding:1.6rem 1rem;
+  color:var(--text-secondary);
+  font-size:.85rem;
+  border-top:1px solid var(--border);
+  position:relative;
+  z-index:1;
+}
+.section-view { display:none; }
+.section-view.active { display:block; }
+#servicio-detalle .back-link {
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  margin-bottom:1rem;
+  color:var(--accent);
+  cursor:pointer;
+  font-weight:700;
+  transition:all .2s ease;
+}
+#servicio-detalle .back-link:hover {
+  text-shadow:0 0 12px rgba(0,240,255,.6);
+}
+.glow-line {
+  width:80px;
+  height:3px;
+  margin:.6rem auto 1.2rem;
+  border-radius:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-purple));
+  box-shadow:0 0 14px rgba(0,240,255,.45);
+}
+@media (max-width:768px) {
+  .logo { font-size:1.9rem; }
+  .services { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="matrix" style="opacity:.4"></canvas>
+
+<div class="content">
+
+<header>
+  <div class="logo">Centro de Servicios Digitales</div>
+  <div class="tagline">Plataforma integral para tu papeleria</div>
+</header>
+
+<nav class="main-nav">
+  <a class="active" onclick="showSection('inicio')">Inicio</a>
+  <a onclick="showSection('nosotros')">Nosotros</a>
+  <a onclick="showSection('contacto')">Contacto</a>
+</nav>
+
+<section id="inicio" class="section-view active">
+  <div style="text-align:center;margin:1rem 0 1.6rem;">
+    <h2 class="section-title">Soluciones digitales para papelerias</h2>
+    <p class="section-subtitle">Gestiona inventario, ventas, facturacion, reportes y mas en un solo lugar.</p>
+    <div class="contact-cta">
+      <a class="btn" href="https://wa.me/5804242138320" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+    </div>
+    <div class="glow-line"></div>
+  </div>
+
+  <div class="grid services">
+    <div class="card" onclick="showService('inventario')">
+      <div class="card-header"><div class="card-icon">📦</div><div class="card-title">Inventario</div></div>
+      <p>Controla stock, alertas y movimientos.</p>
+      <ul class="features"><li>Catalogo ilimitado</li><li>Alertas de stock</li><li>Importacion Excel</li></ul>
+    </div>
+    <div class="card" onclick="showService('ventas')">
+      <div class="card-header"><div class="card-icon">💰</div><div class="card-title">Punto de Venta</div></div>
+      <p>Cobros rapidos y corte de caja.</p>
+      <ul class="features"><li>Interfaz tactil</li><li>Multiples pagos</li><li>Ticket personalizado</li></ul>
+    </div>
+    <div class="card" onclick="showService('factura')">
+      <div class="card-header"><div class="card-icon">📄</div><div class="card-title">Facturacion</div></div>
+      <p>Facturacion electronica valida.</p>
+      <ul class="features"><li>CFDI 4.0</li><li>Timbrado automatico</li><li>Reportes contables</li></ul>
+    </div>
+    <div class="card" onclick="showService('ecommerce')">
+      <div class="card-header"><div class="card-icon">🛒</div><div class="card-title">E-commerce</div></div>
+      <p>Vende en linea con sincronizacion.</p>
+      <ul class="features"><li>Carrito seguro</li><li>Pasarelas de pago</li><li>SEO basico</li></ul>
+    </div>
+    <div class="card" onclick="showService('video')">
+      <div class="card-header"><div class="card-icon">🎬</div><div class="card-title">Edicion de Video</div></div>
+      <p>Produccion audiovisual profesional para redes y contenido digital.</p>
+      <ul class="features"><li>CapCut</li><li>Adobe Premiere Pro</li><li>After Effects</li><li>Motion graphics</li></ul>
+    </div>
+  </div>
+
+  <div style="max-width:1200px;margin:2.2rem auto 0;padding:0 1rem;">
+    <h2 class="section-title">Rendimiento del centro</h2>
+    <p class="section-subtitle">Visualiza metricas reales por dia, mes y ano.</p>
+
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="card-header"><div class="card-icon">📈</div><div class="card-title">Metricas de rendimiento</div></div>
+      <div style="display:flex;align-items:flex-end;gap:12px;height:220px;padding:10px 0 30px;position:relative;z-index:1;">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:100%;max-width:70px;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:10px 10px 0 0;height:75%;box-shadow:0 0 18px rgba(0,240,255,.35);animation:barPulse 3s ease-in-out infinite;"></div>
+          <span style="color:var(--text-secondary);font-size:.75rem;font-weight:600;">Lun</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:100%;max-width:70px;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:10px 10px 0 0;height:92%;box-shadow:0 0 18px rgba(168,85,247,.35);animation:barPulse 3s ease-in-out infinite .2s;"></div>
+          <span style="color:var(--text-secondary);font-size:.75rem;font-weight:600;">Mar</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:100%;max-width:70px;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:10px 10px 0 0;height:60%;box-shadow:0 0 18px rgba(0,240,255,.35);animation:barPulse 3s ease-in-out infinite .4s;"></div>
+          <span style="color:var(--text-secondary);font-size:.75rem;font-weight:600;">Mie</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:100%;max-width:70px;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:10px 10px 0 0;height:84%;box-shadow:0 0 18px rgba(168,85,247,.35);animation:barPulse 3s ease-in-out infinite .6s;"></div>
+          <span style="color:var(--text-secondary);font-size:.75rem;font-weight:600;">Jue</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:100%;max-width:70px;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:10px 10px 0 0;height:95%;box-shadow:0 0 18px rgba(0,240,255,.35);animation:barPulse 3s ease-in-out infinite .8s;"></div>
+          <span style="color:var(--text-secondary);font-size:.75rem;font-weight:600;">Vie</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:100%;max-width:70px;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:10px 10px 0 0;height:70%;box-shadow:0 0 18px rgba(168,85,247,.35);animation:barPulse 3s ease-in-out infinite 1s;"></div>
+          <span style="color:var(--text-secondary);font-size:.75rem;font-weight:600;">Sab</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:100%;max-width:70px;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:10px 10px 0 0;height:50%;box-shadow:0 0 18px rgba(0,240,255,.35);animation:barPulse 3s ease-in-out infinite 1.2s;"></div>
+          <span style="color:var(--text-secondary);font-size:.75rem;font-weight:600;">Dom</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon">📅</div><div class="card-title">Rendimiento diario</div></div>
+        <div style="display:flex;align-items:flex-end;gap:8px;height:160px;padding:10px 0 24px;position:relative;z-index:1;">
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:55%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite 0s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:8px 8px 0 0;height:78%;box-shadow:0 0 14px rgba(168,85,247,.3);animation:barPulse 3s ease-in-out infinite .15s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:48%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite .3s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:8px 8px 0 0;height:88%;box-shadow:0 0 14px rgba(168,85,247,.3);animation:barPulse 3s ease-in-out infinite .45s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:66%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite .6s;"></div>
+        </div>
+        <p class="section-subtitle" style="margin-top:.2rem;">Ultimos 5 dias</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-icon">🗓️</div><div class="card-title">Rendimiento mensual</div></div>
+        <div style="display:flex;align-items:flex-end;gap:8px;height:160px;padding:10px 0 24px;position:relative;z-index:1;">
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:68%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite 0s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:8px 8px 0 0;height:82%;box-shadow:0 0 14px rgba(168,85,247,.3);animation:barPulse 3s ease-in-out infinite .15s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:60%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite .3s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:8px 8px 0 0;height:90%;box-shadow:0 0 14px rgba(168,85,247,.3);animation:barPulse 3s ease-in-out infinite .45s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:74%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite .6s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:8px 8px 0 0;height:65%;box-shadow:0 0 14px rgba(168,85,247,.3);animation:barPulse 3s ease-in-out infinite .75s;"></div>
+        </div>
+        <p class="section-subtitle" style="margin-top:.2rem;">Ultimos 6 meses</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-icon">📊</div><div class="card-title">Rendimiento anual</div></div>
+        <div style="display:flex;align-items:flex-end;gap:8px;height:160px;padding:10px 0 24px;position:relative;z-index:1;">
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:62%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite 0s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:8px 8px 0 0;height:88%;box-shadow:0 0 14px rgba(168,85,247,.3);animation:barPulse 3s ease-in-out infinite .2s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#00f0ff,#00f0ff66);border-radius:8px 8px 0 0;height:72%;box-shadow:0 0 14px rgba(0,240,255,.3);animation:barPulse 3s ease-in-out infinite .4s;"></div>
+          <div style="flex:1;background:linear-gradient(180deg,#a855f7,#a855f766);border-radius:8px 8px 0 0;height:95%;box-shadow:0 0 14px rgba(168,85,247,.3);animation:barPulse 3s ease-in-out infinite .6s;"></div>
+        </div>
+        <p class="section-subtitle" style="margin-top:.2rem;">Ultimos 4 anos</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-icon">👥</div><div class="card-title">Metricas globales y de clientes</div></div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:6px 0;position:relative;z-index:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="color:var(--text-secondary);font-size:.85rem;">Satisfaccion</span>
+            <span style="color:var(--accent);font-weight:800;">94%</span>
+          </div>
+          <div style="width:100%;height:10px;background:rgba(255,255,255,.08);border-radius:9px;overflow:hidden;box-shadow:0 0 18px rgba(0,240,255,.35);animation:barPulse 3s ease-in-out infinite 0s;">
+            <div style="width:94%;height:100%;background:linear-gradient(90deg,#00f0ff,#a855f7);border-radius:9px;box-shadow:0 0 10px rgba(0,240,255,.4);"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="color:var(--text-secondary);font-size:.85rem;">Clientes activos</span>
+            <span style="color:var(--accent);font-weight:800;">1.240</span>
+          </div>
+          <div style="width:100%;height:10px;background:rgba(255,255,255,.08);border-radius:9px;overflow:hidden;box-shadow:0 0 18px rgba(0,240,255,.35);animation:barPulse 3s ease-in-out infinite .2s;">
+            <div style="width:82%;height:100%;background:linear-gradient(90deg,#00f0ff,#a855f7);border-radius:9px;box-shadow:0 0 10px rgba(168,85,247,.4);"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="color:var(--text-secondary);font-size:.85rem;">Tiempo respuesta</span>
+            <span style="color:var(--accent);font-weight:800;">2.3h</span>
+          </div>
+          <div style="width:100%;height:10px;background:rgba(255,255,255,.08);border-radius:9px;overflow:hidden;box-shadow:0 0 18px rgba(0,240,255,.35);animation:barPulse 3s ease-in-out infinite .4s;">
+            <div style="width:76%;height:100%;background:linear-gradient(90deg,#00f0ff,#a855f7);border-radius:9px;box-shadow:0 0 10px rgba(0,240,255,.4);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section id="servicio-detalle" class="section-view">
+  <div class="back-link" onclick="showSection('inicio')">← Volver</div>
+  <div class="card" style="cursor:default;">
+    <div class="card-header"><div class="card-icon" id="svc-icon"></div><div class="card-title" id="svc-title"></div></div>
+    <p id="svc-desc"></p>
+    <ul class="features" id="svc-features"></ul>
+  </div>
+  <div class="contact-cta" style="margin-top:1.2rem;">
+    <a class="btn" href="https://wa.me/5804242138320" target="_blank" rel="noopener">Consultar disponibilidad</a>
+  </div>
+</section>
+
+<section id="nosotros" class="section-view">
+  <h2 class="section-title">Nosotros</h2>
+  <p class="section-subtitle">Tecnologia pensada para papelerias.</p>
+  <div class="grid services">
+    <div class="card" style="cursor:default;"><div class="card-header"><div class="card-icon">🎯</div><div class="card-title">Especializados</div></div><p>Somos personas comprometidas a nivel expertos en cada area de servicios digitales.</p></div>
+    <div class="card" style="cursor:default;"><div class="card-header"><div class="card-icon">⚡</div><div class="card-title">Implementacion rapida</div></div><p>Empieza a operar en menos de un dia.</p></div>
+    <div class="card" style="cursor:default;"><div class="card-header"><div class="card-icon">🔒</div><div class="card-title">Seguridad</div></div><p>Tus datos protegidos y en la nube.</p></div>
+    <div class="card" style="cursor:default;"><div class="card-header"><div class="card-icon">📱</div><div class="card-title">Multiplataforma</div></div><p>Usalo en PC, tablet o celular.</p></div>
+    <div class="card" style="cursor:default;"><div class="card-header"><div class="card-icon">🛠️</div><div class="card-title">Desarrollo autonomo</div></div><p>Sistema de desarrollo propio con creacion de aplicaciones ejecutables, codigos fuente, generacion de programas y scripts automatizados.</p></div>
+    <div class="card" style="cursor:default;"><div class="card-header"><div class="card-icon">📦</div><div class="card-title">Soluciones a medida</div></div><p>Aplicaciones adaptadas a las necesidades especificas de tu negocio.</p></div>
+  </div>
+</section>
+
+<section id="contacto" class="section-view">
+  <h2 class="section-title">Contacto</h2>
+  <p class="section-subtitle">Escribenos y te guiamos sin costo.</p>
+  <div class="grid services">
+    <div class="card" style="cursor:default;">
+      <div class="card-header"><div class="card-icon">&#x1F4DE;</div><div class="card-title">WhatsApp</div></div>
+      <p><a href="tel:+5804242138320" style="color:var(--accent);text-decoration:none;font-weight:700;">+58 0424-2138320</a></p>
+    </div>
+    <div class="card" style="cursor:default;">
+      <div class="card-header"><div class="card-icon">&#x2709;&#xFE0F;</div><div class="card-title">Correo</div></div>
+      <p><a href="mailto:centralcyber284@gmail.com" style="color:var(--accent);text-decoration:none;font-weight:700;">centralcyber284@gmail.com</a></p>
+    </div>
+    <div class="card" style="cursor:default;">
+      <div class="card-header"><div class="card-icon">&#x1F4CD;</div><div class="card-title">Ubicacion</div></div>
+      <p>VENEZUELA, CUPIRA</p>
+    </div>
+  </div>
+  <div class="card" style="max-width:700px;margin:1.2rem auto 0;cursor:default;">
+    <div class="card-header"><div class="card-icon">&#x1F4E6;</div><div class="card-title">Enviar mensaje por WhatsApp</div></div>
+    <form id="contacto-form" style="display:flex;flex-direction:column;gap:.9rem;" onsubmit="return false;">
+      <input type="text" id="form-nombre" placeholder="Tu nombre" required style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;color:var(--text-primary);font-family:inherit;font-size:.95rem;outline:none;transition:all .25s ease;width:100%;" onfocus="this.style.borderColor='rgba(0,240,255,.5)';this.style.boxShadow='0 0 12px rgba(0,240,255,.12)'" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'">
+      <input type="email" id="form-email" placeholder="Tu correo electronico" required style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;color:var(--text-primary);font-family:inherit;font-size:.95rem;outline:none;transition:all .25s ease;width:100%;" onfocus="this.style.borderColor='rgba(0,240,255,.5)';this.style.boxShadow='0 0 12px rgba(0,240,255,.12)'" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'">
+      <textarea id="form-mensaje" rows="4" placeholder="Escribe tu mensaje aqui..." required style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;color:var(--text-primary);font-family:inherit;font-size:.95rem;outline:none;resize:vertical;transition:all .25s ease;width:100%;" onfocus="this.style.borderColor='rgba(0,240,255,.5)';this.style.boxShadow='0 0 12px rgba(0,240,255,.12)'" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'"></textarea>
+      <button type="button" class="btn" style="border:none;font-family:inherit;font-size:1rem;justify-content:center;width:100%;" onclick="sendWhatsApp()">Enviar mensaje</button>
+    </form>
+    <p id="form-status" style="display:none;text-align:center;margin-top:.8rem;font-weight:700;position:relative;z-index:1;"></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>Centro de Servicios Digitales · 2026</div>
+</footer>
+
+</div>
+
+<script>
+const services = {
+  inventario: { title:'Inventario', icon:'📦', desc:'Control inteligente de stock para tu papeleria.', features:['Catalogo ilimitado','Alertas de stock','Movimientos e historial','Multi-sucursal','Importacion desde Excel'] },
+  ventas: { title:'Punto de Venta', icon:'💰', desc:'Sistema de cobro rapido y eficiente.', features:['Interfaz tactil','Multiples metodos de pago','Tickets personalizados','Corte de caja','Compatible con tablet y PC'] },
+  factura: { title:'Facturacion Electronica', icon:'📄', desc:'Facturacion electronica valida y automatizada.', features:['CFDI 4.0','Timbrado automatico','Reportes XML/PDF','Clientes con RFC'] },
+  ecommerce: { title:'E-commerce', icon:'🛒', desc:'Tienda en linea sincronizada.', features:['Carrito de compras','Pasarelas de pago','Envios y logistica','SEO basico'] },
+  reportes: { title:'Reportes y Analytics', icon:'📊', desc:'Decisiones basadas en datos.', features:['Dashboard en tiempo real','Productos estrella','Exportacion PDF/Excel'] },
+  soporte: { title:'Soporte Tecnico', icon:'🎧', desc:'Acompanamiento cuando lo necesites.', features:['Chat en vivo','Capacitacion','Actualizaciones sin costo','Base de conocimiento'] },
+  video: { title:'Edicion de Video', icon:'🎬', desc:'Produccion audiovisual profesional con herramientas profesionales.', features:['CapCut','Adobe Premiere Pro','After Effects','Motion graphics','Redes sociales'] },
+  crm: { title:'CRM', icon:'👥', desc:'Gestion y seguimiento de clientes.', features:['Base de clientes','Historial de compras','Segmentacion','Recordatorios'] },
+  marketing: { title:'Marketing Digital', icon:'📢', desc:'Crea campanas y mide resultados.', features:['Redes sociales','Email marketing','Cupones dinamicos'] },
+  nomina: { title:'Nomina', icon:'💳', desc:'Nomina y recursos humanos.', features:['Calculo automatico','Asistencia','Reportes para contador'] },
+  contabilidad: { title:'Contabilidad', icon:'📈', desc:'Contabilidad electronica integrada.', features:['Libro diario','Balance general','Declaraciones automaticas'] },
+  almacen: { title:'Almacen', icon:'🏭', desc:'Control avanzado de almacen.', features:['Ubicaciones fisicas','Picking y packing','Caducidad por lote'] },
+  compras: { title:'Compras', icon:'🛍️', desc:'Ordenes y proveedores.', features:['Ordenes automaticas','Comparacion de precios','Seguimiento'] },
+  proveedores: { title:'Proveedores', icon:'🤝', desc:'Portal de proveedores.', features:['Portal privado','Confirmacion de ordenes','Actualizacion de catalogos'] },
+  etiquetas: { title:'Etiquetas', icon:'🏷️', desc:'Impresion de etiquetas.', features:['Plantillas predefinidas','Codigos de barras','Impresion por lotes'] },
+  pedidos: { title:'Pedidos', icon:'📋', desc:'Pedidos especiales.', features:['Cotizaciones','Apartados','Notificaciones'] },
+  devoluciones: { title:'Devoluciones', icon:'↩️', desc:'Control de devoluciones.', features:['Registro con motivo','Reembolsos','Politicas configurables'] },
+  giftcards: { title:'Gift Cards', icon:'🎁', desc:'Vales y tarjetas de regalo.', features:['Digitales y fisicas','Montos personalizables','Reportes'] },
+  loyalty: { title:'Fidelizacion', icon:'⭐', desc:'Programa de puntos.', features:['Puntos por compra','Recompensas','Referidos'] },
+  analytics: { title:'Analytics', icon:'📉', desc:'Analisis avanzado.', features:['Prediccion de demanda','Alertas','Forecasting'] },
+  api: { title:'API', icon:'🔌', desc:'Integraciones.', features:['API REST','Webhooks','Documentacion'] },
+  backup: { title:'Backup', icon:'💾', desc:'Respaldo y recuperacion.', features:['Backup automatico','Multiples ubicaciones','Recuperacion granular'] },
+  seguridad: { title:'Seguridad', icon:'🔐', desc:'Seguridad avanzada.', features:['2FA','RBAC','Auditoria','Cifrado'] },
+  multi: { title:'Multi-idioma', icon:'🌐', desc:'Idiomas y monedas.', features:['15 idiomas','50+ monedas','Traduccion automatica'] },
+  app: { title:'App Movil', icon:'📱', desc:'App para empleados.', features:['iOS y Android','Escaneo','Offline'] },
+  kiosko: { title:'Kiosko', icon:'🖥️', desc:'Punto de venta autoservicio.', features:['Autoservicio','Pago con tarjeta','Personalizacion'] },
+  scanner: { title:'Scanner', icon:'📡', desc:'Escaneo de documentos.', features:['OCR','Validacion contra SAT','Busqueda'] }
+};
+
+function showSection(id) {
+  document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
+
+  if (id === 'inicio') {
+    document.getElementById('inicio').classList.add('active');
+    const el = document.querySelector('nav.main-nav a');
+    if(el) el.classList.add('active');
+  } else if (id === 'nosotros') {
+    document.getElementById('nosotros').classList.add('active');
+    document.querySelectorAll('.main-nav a')[1].classList.add('active');
+  } else if (id === 'contacto') {
+    document.getElementById('contacto').classList.add('active');
+    document.querySelectorAll('.main-nav a')[2].classList.add('active');
+  }
+}
+
+function showService(key) {
+  const svc = services[key];
+  if (!svc) return;
+  document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
+  document.getElementById('svc-icon').textContent = svc.icon;
+  document.getElementById('svc-title').textContent = svc.title;
+  document.getElementById('svc-desc').textContent = svc.desc;
+  document.getElementById('svc-features').innerHTML = svc.features.map(f=>'<li>'+f+'</li>').join('');
+  document.getElementById('servicio-detalle').classList.add('active');
+}
+
+function initMatrix() {
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  const drops = [];
+  const chars = '0123456789ABCDEF';
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  class Drop {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * -height : -20;
+      this.speed = Math.random() * 1.2 + 0.8;
+      this.char = chars[Math.floor(Math.random() * chars.length)];
+      this.opacity = Math.random() * 0.3 + 0.2;
+      this.size = Math.random() * 4 + 10;
+      this.trail = Math.floor(Math.random() * 5 + 3);
+    }
+    update() {
+      this.y += this.speed;
+      if (this.y > height + 30) this.reset(false);
+      if (Math.random() > 0.99) {
+        this.char = chars[Math.floor(Math.random() * chars.length)];
+      }
+    }
+    draw() {
+      ctx.font = this.size + 'px monospace';
+      ctx.fillStyle = `rgba(0,240,255,${this.opacity})`;
+      ctx.fillText(this.char, this.x, this.y);
+      ctx.fillStyle = `rgba(0,240,255,${this.opacity * 0.22})`;
+      for (let i = 1; i < this.trail; i++) {
+        ctx.fillText(this.char, this.x, this.y - i * 14);
+      }
+    }
+  }
+
+  function init() {
+    resize();
+    const count = width < 768 ? 20 : 40;
+    drops.length = 0;
+    for (let i = 0; i < count; i++) drops.push(new Drop());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    drops.forEach(d => { d.update(); d.draw(); });
+    requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+
+  let timeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      resize();
+      const target = width < 768 ? 20 : 40;
+      while (drops.length > target) drops.pop();
+      while (drops.length < target) drops.push(new Drop());
+    }, 200);
+  });
+}
+
+initMatrix();
+function sendWhatsApp(){
+  var form = document.getElementById('contacto-form');
+  if (!form) return;
+  var nombre = document.getElementById('form-nombre').value.trim();
+  var email = document.getElementById('form-email').value.trim();
+  var mensaje = document.getElementById('form-mensaje').value.trim();
+  var status = document.getElementById('form-status');
+  if (!nombre || !email || !mensaje) {
+    status.textContent = 'Por favor completa todos los campos.';
+    status.style.color = '#fca5a5';
+    status.style.display = 'block';
+    return;
+  }
+  var text = 'Mensaje de: ' + nombre + '\nCorreo: ' + email + '\n\nMensaje:\n' + mensaje;
+  status.textContent = 'Abriendo WhatsApp...';
+  status.style.color = 'var(--accent)';
+  status.style.display = 'block';
+  form.reset();
+  setTimeout(function(){
+    window.location.href = 'https://wa.me/5804242138320?text=' + encodeURIComponent(text);
+  }, 200);
+}
+</script>
+</body>
+</html>

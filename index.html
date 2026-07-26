@@ -1,187 +1,796 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- 1. OPTIMIZACIÓN DE RED: Conexión anticipada a los servidores de Bootstrap -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    
-    <!-- 2. OPTIMIZACIÓN LCP: Obliga al navegador a descargar el fondo de inmediato -->
-    <link rel="preload" as="image" href="fondo.jpg">
-    
-    <!-- 3. SEO: Metadescripción perfecta para Google -->
-    <meta name="description" content="Centro de Servicios Digitales en Cupira, Estado Miranda. Ofrecemos navegación ultra rápida, copias nítidas, trámites en línea y atención de primera.">
-    
-    <title>Centro de Servicios Digitales - Inicio</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    
-    <style>
-        body {
-            background-image: url("fondo.jpg");
-            background-size: cover;
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #0d1b2a;
-            padding-top: 4.5rem;
-            padding-bottom: 0px;
-            overflow-x: hidden;
-        }
-        .cyber-card {
-            background: rgba(20, 29, 43, 0.9);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-        }
-        .btn-tarifas-cyber {
-            background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn-tarifas-cyber:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 25px rgba(0, 180, 216, 0.6);
-            color: #ffffff;
-            border-color: #ffffff;
-        }
-        .contador-caja {
-            background-color: #000000;
-            font-family: 'Courier New', Courier, monospace;
-            letter-spacing: 5px;
-            border: 2px solid #ffffff;
-            text-shadow: 0 0 8px #ff3333;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
-        #cyber-avatar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            font-size: 30px;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease-out;
-            animation: caminar 0.6s infinite alternate ease-in-out;
-            color: #ffffff;
-            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-        }
-        @keyframes caminar {
-            0% { transform: translateY(0) rotate(-6deg); }
-            100% { transform: translateY(-6px) rotate(6deg); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Centro de Servicios Digitales - Soluciones tecnológicas integrales para papelerías en Venezuela. Inventario, e-commerce, automatizaciones, edición de video y más.">
+<meta name="keywords" content="papelería digital, inventario, e-commerce, automatizaciones, edición de video, Venezuela">
+<title>Centro de Servicios Digitales | Soluciones Tecnológicas Integrales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-body: #0a0a12;
+  --bg-card: rgba(22,22,34,.78);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent: #00f0ff;
+  --accent-purple: #a855f7;
+  --accent-gold: #fbbf24;
+  --border: rgba(255,255,255,0.10);
+  --shadow-glow: 0 0 30px rgba(0,240,255,.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+html, body { height:100%; }
+body {
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--text-primary);
+  background:var(--bg-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+#matrix {
+  position:fixed; inset:0; width:100%; height:100%;
+  z-index:0; pointer-events:none; opacity:.35;
+}
+.content { position:relative; z-index:1; }
+header {
+  text-align:center; padding:2rem 1rem 1.2rem;
+  animation: fadeInDown .8s ease both;
+}
+.logo {
+  font-size:2.4rem; font-weight:900; letter-spacing:-1px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; animation: glowPulse 4s ease-in-out infinite;
+}
+.tagline {
+  margin-top:.4rem; color:var(--text-secondary);
+  font-size:.95rem; letter-spacing:.5px; font-weight:500;
+}
+@keyframes glowPulse {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(0,240,255,.2)); }
+  50% { filter: drop-shadow(0 0 16px rgba(168,85,247,.35)); }
+}
+@keyframes fadeInDown {
+  from { opacity:0; transform: translateY(-12px); }
+  to { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity:0; transform: translateY(16px); }
+  to { opacity:1; transform: translateY(0); }
+}
+nav.main-nav {
+  display:flex; justify-content:center; gap:.5rem;
+  padding:.6rem 1rem; position:sticky; top:0;
+  background:rgba(8,8,14,.82); backdrop-filter:blur(16px) saturate(1.4);
+  border-bottom:1px solid var(--border); z-index:50;
+  animation: fadeInDown .8s .1s ease both;
+}
+nav.main-nav a {
+  color:var(--text-secondary); text-decoration:none;
+  font-weight:600; font-size:.88rem; padding:.5rem 1.1rem;
+  border-radius:999px; border:1px solid transparent;
+  transition:all .3s cubic-bezier(.4,0,.2,1); cursor:pointer;
+}
+nav.main-nav a:hover, nav.main-nav a.active {
+  color:var(--accent); border-color:rgba(0,240,255,.35);
+  background:rgba(0,240,255,.07);
+  box-shadow:0 0 24px rgba(0,240,255,.12), inset 0 1px 0 rgba(255,255,255,.06);
+}
+section {
+  max-width:1200px; margin:0 auto;
+  padding:1.8rem 1rem 2.4rem;
+}
+h2.section-title {
+  font-size:1.6rem; font-weight:800; text-align:center; margin-bottom:.4rem;
+  background:linear-gradient(135deg,#fff,rgba(255,255,255,.8));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+p.section-subtitle {
+  text-align:center; color:var(--text-secondary);
+  margin-bottom:1.6rem; font-size:.95rem;
+}
+.glow-line {
+  width:64px; height:3px; margin:.5rem auto 1.4rem;
+  border-radius:3px; background:linear-gradient(90deg,var(--accent),var(--accent-purple));
+  box-shadow:0 0 16px rgba(0,240,255,.5);
+}
+.grid { display:grid; gap:1.1rem; }
+.services { grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+.card {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:20px; padding:1.4rem;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
+  animation: fadeInUp .7s ease both;
+  backdrop-filter:blur(8px);
+}
+.card::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%, rgba(0,240,255,.07), transparent 55%);
+  opacity:0; transition:opacity .4s ease; pointer-events:none;
+}
+.card:hover::before { opacity:1; }
+.card:hover {
+  border-color:rgba(0,240,255,.3);
+  transform:translateY(-4px) scale(1.01);
+  box-shadow:0 20px 40px rgba(0,0,0,.45), var(--shadow-glow);
+}
+.card-header {
+  display:flex; align-items:center; gap:.8rem;
+  margin-bottom:.7rem; position:relative; z-index:1;
+}
+.card-icon {
+  font-size:2rem; filter:drop-shadow(0 0 10px rgba(0,240,255,.4));
+  line-height:1;
+}
+.card-title { font-weight:700; font-size:1.05rem; }
+.card p {
+  color:var(--text-secondary); font-size:.92rem;
+  line-height:1.65; position:relative; z-index:1;
+}
+.card .features {
+  margin-top:.7rem; padding-left:1.2rem;
+  color:var(--text-secondary); font-size:.86rem;
+  line-height:1.85; position:relative; z-index:1;
+}
+.card .features li::marker { color:var(--accent); }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.85rem 1.5rem; border-radius:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  color:#06060e; font-weight:800; font-size:.92rem;
+  text-decoration:none; border:none; cursor:pointer;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 8px 24px rgba(0,240,255,.25);
+  position:relative; overflow:hidden;
+}
+.btn::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.3),transparent 55%);
+  opacity:0; transition:opacity .3s ease;
+}
+.btn:hover::after { opacity:1; }
+.btn:hover {
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 14px 32px rgba(168,85,247,.35);
+}
+.contact-cta { text-align:center; margin:1.8rem 0; }
+.service-btn {
+  display:flex; align-items:center; gap:1rem;
+  padding:1.2rem 1.4rem; border-radius:18px;
+  background:linear-gradient(135deg,rgba(24,24,36,.85),rgba(16,16,26,.75));
+  border:1px solid rgba(255,255,255,.12);
+  color:var(--text-primary); cursor:pointer; text-align:left;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 10px 28px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+  width:100%; position:relative; overflow:hidden;
+  text-decoration:none;
+}
+.service-btn::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(0,240,255,.08),transparent 60%);
+  opacity:0; transition:opacity .4s ease;
+}
+.service-btn:hover::before { opacity:1; }
+.service-btn:hover {
+  border-color:rgba(0,240,255,.45);
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 24px rgba(0,240,255,.1);
+}
+.service-icon { font-size:2rem; filter:drop-shadow(0 0 8px rgba(0,240,255,.4)); flex-shrink:0; }
+.service-body { display:flex; flex-direction:column; gap:.2rem; }
+.service-title { font-weight:700; font-size:1rem; }
+.service-desc { color:var(--text-secondary); font-size:.88rem; line-height:1.5; }
+.service-btn-inventario { border-color:rgba(0,234,255,.3); }
+.service-btn-inventario:hover { border-color:rgba(0,234,255,.6); box-shadow:0 0 28px rgba(0,240,255,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-impresiones { border-color:rgba(176,38,255,.3); }
+.service-btn-impresiones:hover { border-color:rgba(176,38,255,.6); box-shadow:0 0 28px rgba(168,85,247,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-automatizaciones { border-color:rgba(255,80,80,.3); }
+.service-btn-automatizaciones:hover { border-color:rgba(255,80,80,.6); box-shadow:0 0 28px rgba(255,80,80,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-ecommerce { border-color:rgba(0,220,120,.3); }
+.service-btn-ecommerce:hover { border-color:rgba(0,220,120,.6); box-shadow:0 0 28px rgba(0,220,120,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-video { border-color:rgba(255,160,0,.3); }
+.service-btn-video:hover { border-color:rgba(255,160,0,.6); box-shadow:0 0 28px rgba(255,160,0,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-proyectos { border-color:rgba(255,210,0,.3); }
+.service-btn-proyectos:hover { border-color:rgba(255,210,0,.6); box-shadow:0 0 28px rgba(255,210,0,.15), 0 18px 40px rgba(0,0,0,.45); }
+.social-card {
+  display:flex; align-items:center; gap:1rem;
+  padding:1.2rem 1.4rem; border-radius:20px;
+  background:linear-gradient(135deg,rgba(24,24,36,.88),rgba(16,16,26,.78));
+  border:1px solid rgba(255,255,255,.12);
+  color:var(--text-primary); text-decoration:none;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 10px 28px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+  position:relative; overflow:hidden;
+}
+.social-card:hover { transform:translateY(-4px); }
+.social-icon-wrap {
+  width:52px; height:52px; border-radius:16px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 20px rgba(0,0,0,.35);
+}
+.social-icon { font-size:1.6rem; }
+.social-info { display:flex; flex-direction:column; gap:.15rem; }
+.social-title { font-weight:800; font-size:1.05rem; }
+.social-handle { color:var(--text-secondary); font-size:.88rem; }
+.social-arrow { margin-left:auto; color:var(--text-secondary); font-size:1.3rem; transition:all .3s ease; }
+.social-card:hover .social-arrow { color:#fff; transform:translateX(5px); }
+.tiktok-card:hover { border-color:rgba(255,0,128,.6); box-shadow:0 0 36px rgba(255,0,128,.18), 0 18px 40px rgba(0,0,0,.45); }
+.tiktok-card .social-icon { filter:drop-shadow(0 0 10px rgba(255,0,128,.6)); }
+.facebook-card:hover { border-color:rgba(24,119,242,.6); box-shadow:0 0 36px rgba(24,119,242,.18), 0 18px 40px rgba(0,0,0,.45); }
+.facebook-card .social-icon { filter:drop-shadow(0 0 10px rgba(24,119,242,.6)); }
+.story-card {
+  position:relative; background:rgba(18,16,12,.8);
+  border:1px solid rgba(255,255,255,.1); border-radius:24px;
+  padding:2.2rem 2rem 2.4rem; isolation:isolate; overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 24px 60px rgba(0,0,0,.55);
+}
+.story-card::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.08) 4px),
+             repeating-linear-gradient(90deg,transparent,transparent 3px,rgba(0,0,0,.08) 4px);
+  pointer-events:none; z-index:0;
+}
+.story-card::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(255,210,120,.1),transparent 55%);
+  pointer-events:none; z-index:0;
+}
+.story-mark { position:relative; z-index:1; display:flex; align-items:center; gap:10px; margin:1.2rem 0; }
+.story-mark-line { flex:1; height:1px; background:rgba(255,255,255,.2); box-shadow:0 0 10px rgba(255,210,120,.2); }
+.story-mark-dot { width:10px; height:10px; border-radius:50%; background:var(--accent-gold); box-shadow:0 0 14px rgba(255,215,0,.8); }
+.story-title { position:relative; z-index:1; text-align:center; font-size:1.7rem; font-weight:900; letter-spacing:-.3px; background:linear-gradient(135deg,#fff,rgba(255,255,255,.85)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:1.2rem; filter:drop-shadow(0 0 14px rgba(255,210,120,.3)); }
+.story-text { position:relative; z-index:1; color:var(--text-secondary); font-size:1rem; line-height:1.85; margin-bottom:1rem; text-wrap:pretty; font-style:italic; }
+.story-text strong { color:#fff; font-style:normal; font-weight:700; }
+.back-link {
+  display:inline-flex; align-items:center; gap:.4rem;
+  margin-bottom:1rem; color:var(--accent);
+  font-weight:700; font-size:.95rem;
+  transition:all .25s ease; text-decoration:none;
+}
+.back-link:hover { text-shadow:0 0 14px rgba(0,240,255,.55); transform:translateX(-3px); }
+.footer {
+  text-align:center; padding:1.8rem 1rem;
+  color:var(--text-secondary); font-size:.85rem;
+  border-top:1px solid var(--border); position:relative; z-index:1;
+}
+.footer a.terms-link {
+  display:inline-block; margin-top:.6rem; font-size:.78rem;
+  color:var(--text-secondary); text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:1px;
+  opacity:.8; transition:all .2s ease;
+}
+.footer a.terms-link:hover { color:var(--accent); border-bottom-color:var(--accent); }
+@keyframes barPulse {
+  0%,100% { opacity:.95; transform: scaleY(1); transform-origin: bottom; }
+  50% { opacity:1; transform: scaleY(1.04); transform-origin: bottom; }
+}
+input, textarea {
+  background:rgba(255,255,255,.04); border:1px solid var(--border);
+  border-radius:14px; padding:.8rem 1.1rem;
+  color:var(--text-primary); font-family:inherit; font-size:.95rem;
+  outline:none; transition:all .3s ease; width:100%;
+}
+input:focus, textarea:focus {
+  border-color:rgba(0,240,255,.45);
+  box-shadow:0 0 16px rgba(0,240,255,.1), inset 0 1px 0 rgba(255,255,255,.04);
+  background:rgba(255,255,255,.06);
+}
+::placeholder { color:rgba(148,163,184,.6); }
+@media (max-width:768px) {
+  .logo { font-size:1.8rem; }
+  .services { grid-template-columns:1fr; }
+  nav.main-nav { gap:.3rem; padding:.5rem; }
+  nav.main-nav a { font-size:.8rem; padding:.4rem .8rem; }
+  .story-card { padding:1.6rem 1.2rem; }
+}
+.delay-1 { animation-delay:.05s; }
+.delay-2 { animation-delay:.1s; }
+.delay-3 { animation-delay:.15s; }
+.delay-4 { animation-delay:.2s; }
+.delay-5 { animation-delay:.25s; }
+.delay-6 { animation-delay:.3s; }
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  text-align:center; margin:1rem 0 2rem;
+  animation: fadeInUp .8s .15s ease both;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.4rem 1rem; border-radius:999px;
+  background:rgba(0,240,255,.08); border:1px solid rgba(0,240,255,.2);
+  color:var(--accent); font-size:.82rem; font-weight:600; margin-bottom:1rem;
+}
+.hero-title {
+  font-size:2.2rem; font-weight:900; line-height:1.15;
+  background:linear-gradient(135deg,#fff 30%,rgba(255,255,255,.7));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  margin-bottom:.6rem;
+}
+.hero-subtitle {
+  color:var(--text-secondary); font-size:1.05rem; max-width:520px;
+  margin:0 auto 1.4rem; line-height:1.6;
+}
+
+/* ===== LOCATION CARD ===== */
+.location-card {
+  display:flex; align-items:center; gap:1rem; padding:1.2rem 1.4rem;
+  background:linear-gradient(135deg,rgba(0,240,255,.08),rgba(168,85,247,.06));
+  border:1px solid rgba(0,240,255,.2); border-radius:18px;
+  margin-bottom:1.4rem;
+}
+.location-icon { font-size:1.8rem; }
+.location-info { flex:1; }
+.location-label { color:var(--text-secondary); font-size:.82rem; font-weight:600; }
+.location-value { color:var(--text-primary); font-size:1rem; font-weight:700; }
+
+/* ===== METRIC BARS ===== */
+.metric-card {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:20px; padding:1.4rem;
+  transition:all .4s ease; position:relative; overflow:hidden;
+  animation: fadeInUp .7s ease both;
+}
+.metric-card:hover {
+  border-color:rgba(0,240,255,.3);
+  box-shadow:0 16px 36px rgba(0,0,0,.4), 0 0 20px rgba(0,240,255,.08);
+}
+.metric-header {
+  display:flex; align-items:center; gap:.7rem; margin-bottom:1rem;
+}
+.metric-header .card-icon { font-size:1.6rem; }
+.metric-header .card-title { font-weight:700; font-size:1rem; }
+.metric-row {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:.35rem;
+}
+.metric-label { color:var(--text-secondary); font-size:.82rem; }
+.metric-value { color:var(--accent); font-weight:800; font-size:.9rem; }
+.metric-bar-wrap {
+  width:100%; height:10px; background:rgba(255,255,255,.06);
+  border-radius:10px; overflow:hidden; margin-bottom:.9rem;
+}
+.metric-bar {
+  height:100%; border-radius:10px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-purple));
+  box-shadow:0 0 10px rgba(0,240,255,.3);
+  animation: barPulse 3s ease-in-out infinite;
+}
+
+/* ===== VERTICAL BARS (weekly chart) ===== */
+.bar-chart {
+  display:flex; align-items:flex-end; gap:10px;
+  height:200px; padding:10px 0 28px; position:relative; z-index:1;
+}
+.bar-group {
+  flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.bar {
+  width:100%; max-width:56px; border-radius:10px 10px 0 0;
+  box-shadow:0 0 16px rgba(0,240,255,.3);
+  animation: barPulse 3s ease-in-out infinite;
+  transition:all .3s ease;
+}
+.bar:hover { filter:brightness(1.2); }
+.bar-cyan { background:linear-gradient(180deg,#00f0ff,#00f0ff55); }
+.bar-purple { background:linear-gradient(180deg,#a855f7,#a855f755); }
+.bar-label { color:var(--text-secondary); font-size:.72rem; font-weight:600; }
+
+/* ===== MINI BARS ===== */
+.mini-chart {
+  display:flex; align-items:flex-end; gap:8px;
+  height:150px; padding:10px 0 24px; position:relative; z-index:1;
+}
+.mini-bar {
+  flex:1; border-radius:8px 8px 0 0;
+  box-shadow:0 0 12px rgba(0,240,255,.25);
+  animation: barPulse 3s ease-in-out infinite;
+  transition:all .3s ease;
+}
+.mini-bar:hover { filter:brightness(1.25); }
+
+/* ===== STAT CARDS ===== */
+.stat-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.1rem;
+}
+.stat-card {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:18px; padding:1.3rem; text-align:center;
+  transition:all .4s ease; animation: fadeInUp .7s ease both;
+}
+.stat-card:hover {
+  border-color:rgba(0,240,255,.3);
+  transform:translateY(-3px);
+  box-shadow:0 14px 32px rgba(0,0,0,.4);
+}
+.stat-number {
+  font-size:2.2rem; font-weight:900;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  line-height:1;
+  margin-bottom:.3rem;
+}
+.stat-label { color:var(--text-secondary); font-size:.85rem; font-weight:600; }
+</style>
 </head>
-<body class="bg-dark text-white">
+<body>
 
-    <!-- Avatar del Robot -->
-    <div id="cyber-avatar"><i class="bi bi-robot"></i></div>
+<canvas id="matrix"></canvas>
 
-    <!-- Barra de Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary fixed-top shadow">
-        <div class="container justify-content-center">
-            <a class="navbar-brand fw-bold text-white mx-0" href="#">
-                <i class="bi bi-display me-2"></i>Centro de Servicios Digitales
-            </a>
+<div class="content">
+
+<header>
+  <div class="logo">Centro de Servicios Digitales</div>
+  <div class="tagline">Plataforma empresarial de tecnología integral</div>
+</header>
+
+<nav class="main-nav">
+  <a class="active" href="index.html">Inicio</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
+
+<section id="inicio">
+  <div class="hero-section">
+    <div class="hero-badge">
+      <span style="color:var(--accent);">●</span> Empresa tecnológica en crecimiento
+    </div>
+    <h1 class="hero-title">Soluciones digitales de alto nivel<br>para tu negocio</h1>
+    <p class="hero-subtitle">Gestiona inventario, ventas, facturación, reportes y más en un solo ecosistema empresarial.</p>
+    <div class="contact-cta">
+      <a class="btn" href="https://wa.me/5804242138320" target="_blank" rel="noopener">
+        <span>💬</span> Contactar por WhatsApp
+      </a>
+    </div>
+    <div class="glow-line"></div>
+  </div>
+
+  <div class="grid services">
+    <a class="service-btn service-btn-inventario delay-1" href="inventario.html">
+      <div class="service-icon">📦</div>
+      <div class="service-body">
+        <div class="service-title">Inventario Inteligente</div>
+        <div class="service-desc">Control de stock, alertas automáticas y movimientos en tiempo real.</div>
+      </div>
+    </a>
+    <a class="service-btn service-btn-impresiones delay-2" href="impresiones.html">
+      <div class="service-icon">🖨️</div>
+      <div class="service-body">
+        <div class="service-title">Servicios de Impresión</div>
+        <div class="service-desc">B/N, color, fotos carnet, postal, papel brillante y cartulinas opalinas.</div>
+      </div>
+    </a>
+    <a class="service-btn service-btn-automatizaciones delay-3" href="automatizaciones.html">
+      <div class="service-icon">⚡</div>
+      <div class="service-body">
+        <div class="service-title">Automatizaciones</div>
+        <div class="service-desc">Respuestas autónomas por correo, WhatsApp y organización documental.</div>
+      </div>
+    </a>
+    <a class="service-btn service-btn-ecommerce delay-4" href="ecommerce.html">
+      <div class="service-icon">🛒</div>
+      <div class="service-body">
+        <div class="service-title">E-commerce Profesional</div>
+        <div class="service-desc">Tienda online con carrito seguro, pasarelas de pago y SEO optimizado.</div>
+      </div>
+    </a>
+    <a class="service-btn service-btn-video delay-5" href="video.html">
+      <div class="service-icon">🎬</div>
+      <div class="service-body">
+        <div class="service-title">Edición de Video</div>
+        <div class="service-desc">Producción audiovisual profesional con Premiere Pro, After Effects y motion graphics.</div>
+      </div>
+    </a>
+    <a class="service-btn service-btn-proyectos delay-6" href="proyectos.html">
+      <div class="service-icon">⏱️</div>
+      <div class="service-body">
+        <div class="service-title">Proyectos Tiempo Récord</div>
+        <div class="service-desc">Transcripción de tesis, trabajos de grado, talleres y proyectos académicos.</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- UBICACIÓN -->
+  <div style="margin-top:2.4rem;">
+    <h2 class="section-title">Ubicación</h2>
+    <div class="glow-line"></div>
+    <div class="location-card delay-2">
+      <div class="location-icon">📍</div>
+      <div class="location-info">
+        <div class="location-label">SEDE PRINCIPAL</div>
+        <div class="location-value">Venezuela, Cupira — Estado Miranda</div>
+      </div>
+      <a href="https://maps.app.goo.gl/7qqLtMAe32paaL6h9" target="_blank" rel="noopener" class="btn" style="flex-shrink:0;">
+        <span>🗺️</span> Google Maps
+      </a>
+    </div>
+  </div>
+
+  <!-- MÉTRICAS -->
+  <div style="margin-top:2.4rem;">
+    <h2 class="section-title">Rendimiento Empresarial</h2>
+    <p class="section-subtitle">Métricas reales de crecimiento y satisfacción del cliente.</p>
+    <div class="glow-line"></div>
+
+    <!-- Gráfico semanal -->
+    <div class="metric-card" style="margin-bottom:1.2rem;">
+      <div class="metric-header">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Tendencia Semanal de Operaciones</div>
+      </div>
+      <div class="bar-chart">
+        <div class="bar-group">
+          <div class="bar bar-cyan" style="height:75%;animation-delay:0s;"></div>
+          <span class="bar-label">Lun</span>
         </div>
-    </nav>
-
-    <!-- Estructura Semántica Principal -->
-    <main>
-        <div class="container my-4" style="max-width: 650px;">
-            
-            <div class="cyber-card p-4 mb-4 text-center">
-                <h1 class="display-5 fw-bold text-white mb-3">Bienvenidos a la Era Digital</h1>
-                <p class="lead text-white-50 fs-6 px-2 mb-3">Navegación ultra rápida, copias nítidas y gestión de trámites en un solo lugar.</p>
-                <div class="p-3 rounded-3 bg-black border border-secondary text-info fw-semibold shadow-sm">
-                    <i class="bi bi-geo-alt-fill text-danger me-2 fs-5"></i>
-                    Estamos ubicados en Cupira Estado Miranda Cerca de el Popular TETOCA
-                </div>
-            </div>
-
-            <div class="cyber-card p-4 mb-4 text-center">
-                <p class="h4 fw-light text-white mb-4">¿Quieres conocer lo que ofrecemos?</p>
-                <div class="px-2">
-                    <a href="servicios.html" target="_blank" class="btn btn-tarifas-cyber w-100 py-3 shadow">
-                        <i class="bi bi-tags-fill me-2"></i>Nuestros Servicios y Tarifas
-                    </a>
-                </div>
-            </div>
-
-            <div class="cyber-card p-4 mb-4">
-                <h4 class="fw-bold text-white text-center mb-3">
-                    <i class="bi bi-play-btn-fill me-2 text-danger"></i>Conócenos por Dentro
-                </h4>
-                <div class="ratio ratio-16x9 rounded-3 overflow-hidden border border-secondary bg-black shadow">
-                    <!-- VIDEO: Recuerda subir la versión que comprimiste para máxima velocidad -->
-                    <video autoplay muted loop playsinline preload="metadata" poster="fondo.jpg" class="w-100 h-100">
-                        <source src="./video.mp4" type="video/mp4">
-                        Tu navegador no soporta la reproducción de videos locales.
-                    </video>
-                </div>
-            </div>
-
-            <div class="cyber-card p-4 mb-4">
-                <div class="row g-3 text-center align-items-center">
-                    <div class="col-sm-6 border-end border-secondary">
-                        <h5 class="fw-bold text-info mb-2"><i class="bi bi-clock-fill me-2"></i>Horario</h5>
-                        <p class="mb-0 fw-semibold text-white fs-6">Lunes a Domingo</p>
-                        <p class="text-white-50 small mb-0">08:00 AM / 08:00 PM</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <h5 class="fw-bold text-success mb-2"><i class="bi bi-whatsapp me-2"></i>Dudas?</h5>
-                        <a href="https://wa.me/584242138320" target="_blank" class="btn btn-success fw-bold px-3 py-2 shadow-sm">
-                            Escríbenos Directo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cyber-card p-4 text-center mb-5">
-                <h6 class="text-white-50 text-uppercase small tracking-wider mb-2">Visitas del Día</h6>
-                <div class="contador-caja d-inline-block px-4 py-2 rounded text-danger fs-3 fw-bold">
-                    <span id="contador-digital">00000000</span>
-                </div>
-            </div>
-            
+        <div class="bar-group">
+          <div class="bar bar-purple" style="height:92%;animation-delay:.2s;"></div>
+          <span class="bar-label">Mar</span>
         </div>
-    </main>
+        <div class="bar-group">
+          <div class="bar bar-cyan" style="height:60%;animation-delay:.4s;"></div>
+          <span class="bar-label">Mié</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar bar-purple" style="height:84%;animation-delay:.6s;"></div>
+          <span class="bar-label">Jue</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar bar-cyan" style="height:95%;animation-delay:.8s;"></div>
+          <span class="bar-label">Vie</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar bar-purple" style="height:70%;animation-delay:1s;"></div>
+          <span class="bar-label">Sáb</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar bar-cyan" style="height:50%;animation-delay:1.2s;"></div>
+          <span class="bar-label">Dom</span>
+        </div>
+      </div>
+    </div>
 
-    <!-- 4. RENDIMIENTO: El atributo "defer" evita que el script bloquee la carga visual -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-    
-    <script>
-        const robot = document.getElementById('cyber-avatar');
-        let objX = 0, objY = 0, actX = 0, actY = 0;
-        document.addEventListener('mousemove', (e) => { 
-            objX = e.clientX + 18; 
-            objY = e.clientY + 18; 
-        });
-        function move() { 
-            actX += (objX - actX) * 0.08; 
-            actY += (objY - actY) * 0.08; 
-            robot.style.left = `${actX}px`; 
-            robot.style.top = `${actY}px`; 
-            requestAnimationFrame(move); 
-        }
-        move();
+    <!-- Mini gráficos -->
+    <div class="stat-grid" style="margin-bottom:1.2rem;">
+      <div class="metric-card delay-1">
+        <div class="metric-header">
+          <div class="card-icon">📅</div>
+          <div class="card-title">Crecimiento Diario</div>
+        </div>
+        <div class="mini-chart">
+          <div class="mini-bar bar-cyan" style="height:55%;animation-delay:0s;"></div>
+          <div class="mini-bar bar-purple" style="height:78%;animation-delay:.15s;"></div>
+          <div class="mini-bar bar-cyan" style="height:48%;animation-delay:.3s;"></div>
+          <div class="mini-bar bar-purple" style="height:88%;animation-delay:.45s;"></div>
+          <div class="mini-bar bar-cyan" style="height:66%;animation-delay:.6s;"></div>
+        </div>
+        <p class="section-subtitle" style="margin-top:.2rem;font-size:.82rem;">Últimos 5 días · +75% clientes nuevos</p>
+      </div>
 
-        const f = new Date().toISOString().slice(0, 10);
-        let d = localStorage.getItem('cyber_fecha_dia'), v = localStorage.getItem('cyber_visitas_diarias');
-        if (d !== f) { 
-            v = 1; 
-            localStorage.setItem('cyber_fecha_dia', f); 
-        } else { 
-            v = parseInt(v || 0) + 1; 
-        }
-        localStorage.setItem('cyber_visitas_diarias', v);
-        document.getElementById('contador-digital').innerText = v.toString().padStart(8, '0');
-    </script>
+      <div class="metric-card delay-2">
+        <div class="metric-header">
+          <div class="card-icon">🗓️</div>
+          <div class="card-title">Crecimiento Mensual</div>
+        </div>
+        <div class="mini-chart">
+          <div class="mini-bar bar-cyan" style="height:68%;animation-delay:0s;"></div>
+          <div class="mini-bar bar-purple" style="height:82%;animation-delay:.15s;"></div>
+          <div class="mini-bar bar-cyan" style="height:60%;animation-delay:.3s;"></div>
+          <div class="mini-bar bar-purple" style="height:90%;animation-delay:.45s;"></div>
+          <div class="mini-bar bar-cyan" style="height:74%;animation-delay:.6s;"></div>
+          <div class="mini-bar bar-purple" style="height:65%;animation-delay:.75s;"></div>
+        </div>
+        <p class="section-subtitle" style="margin-top:.2rem;font-size:.82rem;">Últimos 6 meses · +65% clientes nuevos</p>
+      </div>
+
+      <div class="metric-card delay-3">
+        <div class="metric-header">
+          <div class="card-icon">📊</div>
+          <div class="card-title">Crecimiento Anual</div>
+        </div>
+        <div class="mini-chart">
+          <div class="mini-bar bar-cyan" style="height:62%;animation-delay:0s;"></div>
+          <div class="mini-bar bar-purple" style="height:88%;animation-delay:.2s;"></div>
+          <div class="mini-bar bar-cyan" style="height:72%;animation-delay:.4s;"></div>
+          <div class="mini-bar bar-purple" style="height:95%;animation-delay:.6s;"></div>
+        </div>
+        <p class="section-subtitle" style="margin-top:.2rem;font-size:.82rem;">Últimos 4 años · +205% clientes nuevos</p>
+      </div>
+
+      <div class="metric-card delay-4">
+        <div class="metric-header">
+          <div class="card-icon">👥</div>
+          <div class="card-title">Métricas de Clientes</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:6px 0;position:relative;z-index:1;">
+          <div class="metric-row">
+            <span class="metric-label">Satisfacción del cliente</span>
+            <span class="metric-value">94%</span>
+          </div>
+          <div class="metric-bar-wrap">
+            <div class="metric-bar" style="width:94%;animation-delay:0s;"></div>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Clientes activos</span>
+            <span class="metric-value">1,240</span>
+          </div>
+          <div class="metric-bar-wrap">
+            <div class="metric-bar" style="width:82%;animation-delay:.2s;"></div>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Tiempo de respuesta</span>
+            <span class="metric-value">15 min</span>
+          </div>
+          <div class="metric-bar-wrap">
+            <div class="metric-bar" style="width:76%;animation-delay:.4s;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats summary -->
+    <div class="stat-grid" style="margin-bottom:2rem;">
+      <div class="stat-card delay-1">
+        <div class="stat-number">+205%</div>
+        <div class="stat-label">Crecimiento Anual</div>
+      </div>
+      <div class="stat-card delay-2">
+        <div class="stat-number">1,240</div>
+        <div class="stat-label">Clientes Activos</div>
+      </div>
+      <div class="stat-card delay-3">
+        <div class="stat-number">94%</div>
+        <div class="stat-label">Satisfacción</div>
+      </div>
+      <div class="stat-card delay-4">
+        <div class="stat-number">15m</div>
+        <div class="stat-label">Tiempo Respuesta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REDES SOCIALES -->
+  <div style="margin-top:2rem;">
+    <h2 class="section-title">Síguenos en Redes Sociales</h2>
+    <p class="section-subtitle">Contenido exclusivo, promociones y novedades empresariales.</p>
+    <div class="glow-line"></div>
+    <div class="grid services" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+      <a href="https://www.tiktok.com/@centrodigital284?_r=1&_t=ZS-98L1F9Y68Jz" target="_blank" rel="noopener" class="social-card tiktok-card delay-1">
+        <div class="social-icon-wrap"><span class="social-icon">🎵</span></div>
+        <div class="social-info">
+          <div class="social-title">TikTok</div>
+          <div class="social-handle">@centrodigital284</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a href="https://www.facebook.com/share/19DiVewQ86/" target="_blank" rel="noopener" class="social-card facebook-card delay-2">
+        <div class="social-icon-wrap"><span class="social-icon">👥</span></div>
+        <div class="social-info">
+          <div class="social-title">Facebook</div>
+          <div class="social-handle">Centro Digital</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- NUESTRA HISTORIA -->
+  <div style="margin-top:2.4rem;">
+    <div class="story-card">
+      <div class="story-mark">
+        <div class="story-mark-line"></div>
+        <div class="story-mark-dot"></div>
+        <div class="story-mark-line"></div>
+      </div>
+      <h2 class="story-title">Nuestra Historia</h2>
+      <p class="story-text">
+        Este proyecto nació de la nada, con esfuerzo y muchas ganas de salir adelante.
+        Empezamos siendo una papelería más, de esas que abren con sueños pero también con lucha.
+        Poco a poco fuimos agregando servicios: impresiones, transcripciones, armado de PCs,
+        y cada paso fue una respuesta a la gente que confió en nosotros.
+      </p>
+      <p class="story-text">
+        Con el tiempo convertimos esa papelería tradicional en un <strong>centro digital real</strong>:
+        sistemas, automatizaciones, ecommerce, edición y desarrollo propio.
+        No llegamos aquí por suerte, sino por constancia, errores aprendidos y clientes
+        que se volvieron recurrentes.
+      </p>
+      <p class="story-text">
+        Hoy somos un <strong>centro de servicios digitales en crecimiento</strong>, con metas más altas,
+        pero sin olvidar de dónde venimos ni las manos con las que trabajamos.
+      </p>
+      <div class="story-mark">
+        <div class="story-mark-line"></div>
+        <div class="story-mark-dot"></div>
+        <div class="story-mark-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div style="font-weight:600;">Centro de Servicios Digitales · 2026</div>
+  <div style="font-size:.8rem;margin-top:.3rem;">Venezuela, Cupira · Tecnología con propósito</div>
+  <a href="terminos.html" class="terms-link">Términos y condiciones</a>
+</footer>
+
+</div>
+
+<script>
+function initMatrix() {
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  const drops = [];
+  const chars = '0123456789ABCDEF';
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  class Drop {
+    constructor() { this.reset(true); }
+    reset(initial) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * -height : -20;
+      this.speed = Math.random() * 1.2 + 0.8;
+      this.char = chars[Math.floor(Math.random() * chars.length)];
+      this.opacity = Math.random() * 0.3 + 0.2;
+      this.size = Math.random() * 4 + 10;
+      this.trail = Math.floor(Math.random() * 5 + 3);
+    }
+    update() {
+      this.y += this.speed;
+      if (this.y > height + 30) this.reset(false);
+      if (Math.random() > 0.99) {
+        this.char = chars[Math.floor(Math.random() * chars.length)];
+      }
+    }
+    draw() {
+      ctx.font = this.size + 'px monospace';
+      ctx.fillStyle = `rgba(0,240,255,${this.opacity})`;
+      ctx.fillText(this.char, this.x, this.y);
+      ctx.fillStyle = `rgba(0,240,255,${this.opacity * 0.22})`;
+      for (let i = 1; i < this.trail; i++) {
+        ctx.fillText(this.char, this.x, this.y - i * 14);
+      }
+    }
+  }
+
+  function init() {
+    resize();
+    const count = width < 768 ? 20 : 40;
+    drops.length = 0;
+    for (let i = 0; i < count; i++) drops.push(new Drop());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    drops.forEach(d => { d.update(); d.draw(); });
+    requestAnimationFrame(animate);
+  }
+
+  init(); animate();
+
+  let timeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      resize();
+      const target = width < 768 ? 20 : 40;
+      while (drops.length > target) drops.pop();
+      while (drops.length < target) drops.push(new Drop());
+    }, 200);
+  });
+}
+initMatrix();
+</script>
 </body>
 </html>
