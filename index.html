@@ -158,7 +158,10 @@ p.section-subtitle {
   transform:translateY(-2px) scale(1.03);
   box-shadow:0 14px 32px rgba(168,85,247,.35);
 }
-.contact-cta { text-align:center; margin:1.8rem 0; }
+.contact-cta {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:.8rem;
+  text-align:center; margin:1.8rem 0;
+}
 .service-btn {
   display:flex; align-items:center; gap:1rem;
   padding:1.2rem 1.4rem; border-radius:18px;
@@ -427,7 +430,7 @@ input:focus, textarea:focus {
 
 <header>
   <div class="logo">Centro de Servicios Digitales</div>
-  <div class="tagline">Plataforma de tecnología integral</div>
+  <div class="tagline">Plataforma empresarial de tecnología integral</div>
 </header>
 
 <nav class="main-nav">
@@ -439,13 +442,16 @@ input:focus, textarea:focus {
 <section id="inicio">
   <div class="hero-section">
     <div class="hero-badge">
-      <span style="color:var(--accent);">●</span> Sistema tecnológica en crecimiento
+      <span style="color:var(--accent);">●</span> Empresa tecnológica en crecimiento
     </div>
     <h1 class="hero-title">Soluciones digitales de alto nivel<br>para tu negocio</h1>
-    <p class="hero-subtitle">Gestiona inventario, ventas, reportes y más en un solo ecosistema.</p>
+    <p class="hero-subtitle">Gestiona inventario, ventas, facturación, reportes y más en un solo ecosistema empresarial.</p>
     <div class="contact-cta">
       <a class="btn" href="https://wa.me/5804242138320" target="_blank" rel="noopener">
         <span>💬</span> Contactar por WhatsApp
+      </a>
+      <a class="btn" href="mercado-scrip.html">
+        <span>🛒</span> INGRESAR AL MERCADO DE SCRIP
       </a>
     </div>
     <div class="glow-line"></div>
@@ -514,7 +520,7 @@ input:focus, textarea:focus {
 
   <!-- MÉTRICAS -->
   <div style="margin-top:2.4rem;">
-    <h2 class="section-title">Rendimiento Global Ténico</h2>
+    <h2 class="section-title">Rendimiento Empresarial</h2>
     <p class="section-subtitle">Métricas reales de crecimiento y satisfacción del cliente.</p>
     <div class="glow-line"></div>
 
@@ -658,7 +664,7 @@ input:focus, textarea:focus {
   <!-- REDES SOCIALES -->
   <div style="margin-top:2rem;">
     <h2 class="section-title">Síguenos en Redes Sociales</h2>
-    <p class="section-subtitle">Contenido exclusivo, promociones y novedades.</p>
+    <p class="section-subtitle">Contenido exclusivo, promociones y novedades empresariales.</p>
     <div class="glow-line"></div>
     <div class="grid services" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
       <a href="https://www.tiktok.com/@centrodigital284?_r=1&_t=ZS-98L1F9Y68Jz" target="_blank" rel="noopener" class="social-card tiktok-card delay-1">
@@ -754,43 +760,25 @@ function initMatrix() {
       }
     }
     draw() {
-      ctx.font = this.size + 'px monospace';
-      ctx.fillStyle = `rgba(0,240,255,${this.opacity})`;
+      ctx.font = `${this.size}px monospace`;
+      ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
       ctx.fillText(this.char, this.x, this.y);
-      ctx.fillStyle = `rgba(0,240,255,${this.opacity * 0.22})`;
-      for (let i = 1; i < this.trail; i++) {
-        ctx.fillText(this.char, this.x, this.y - i * 14);
-      }
     }
   }
 
-  function init() {
-    resize();
-    const count = width < 768 ? 20 : 40;
-    drops.length = 0;
-    for (let i = 0; i < count; i++) drops.push(new Drop());
-  }
+  resize();
+  window.addEventListener('resize', resize);
+  for (let i = 0; i < 65; i++) drops.push(new Drop());
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
     drops.forEach(d => { d.update(); d.draw(); });
     requestAnimationFrame(animate);
   }
-
-  init(); animate();
-
-  let timeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      resize();
-      const target = width < 768 ? 20 : 40;
-      while (drops.length > target) drops.pop();
-      while (drops.length < target) drops.push(new Drop());
-    }, 200);
-  });
+  animate();
 }
 initMatrix();
 </script>
+
 </body>
 </html>

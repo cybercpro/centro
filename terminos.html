@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Términos y condiciones de uso del Centro de Servicios Digitales. Políticas de privacidad, propiedad intelectual y responsabilidad.">
+<title>Términos y Condiciones | Centro de Servicios Digitales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-body: #0a0a12;
+  --bg-card: rgba(22,22,34,.78);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent: #00f0ff;
+  --accent-purple: #a855f7;
+  --accent-gold: #fbbf24;
+  --border: rgba(255,255,255,0.10);
+  --shadow-glow: 0 0 30px rgba(0,240,255,.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+html, body { height:100%; }
+body {
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--text-primary);
+  background:var(--bg-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+#matrix {
+  position:fixed; inset:0; width:100%; height:100%;
+  z-index:0; pointer-events:none; opacity:.35;
+}
+.content { position:relative; z-index:1; }
+header {
+  text-align:center; padding:2rem 1rem 1.2rem;
+  animation: fadeInDown .8s ease both;
+}
+.logo {
+  font-size:2.4rem; font-weight:900; letter-spacing:-1px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; animation: glowPulse 4s ease-in-out infinite;
+}
+.tagline {
+  margin-top:.4rem; color:var(--text-secondary);
+  font-size:.95rem; letter-spacing:.5px; font-weight:500;
+}
+@keyframes glowPulse {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(0,240,255,.2)); }
+  50% { filter: drop-shadow(0 0 16px rgba(168,85,247,.35)); }
+}
+@keyframes fadeInDown {
+  from { opacity:0; transform: translateY(-12px); }
+  to { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity:0; transform: translateY(16px); }
+  to { opacity:1; transform: translateY(0); }
+}
+nav.main-nav {
+  display:flex; justify-content:center; gap:.5rem;
+  padding:.6rem 1rem; position:sticky; top:0;
+  background:rgba(8,8,14,.82); backdrop-filter:blur(16px) saturate(1.4);
+  border-bottom:1px solid var(--border); z-index:50;
+  animation: fadeInDown .8s .1s ease both;
+}
+nav.main-nav a {
+  color:var(--text-secondary); text-decoration:none;
+  font-weight:600; font-size:.88rem; padding:.5rem 1.1rem;
+  border-radius:999px; border:1px solid transparent;
+  transition:all .3s cubic-bezier(.4,0,.2,1); cursor:pointer;
+}
+nav.main-nav a:hover, nav.main-nav a.active {
+  color:var(--accent); border-color:rgba(0,240,255,.35);
+  background:rgba(0,240,255,.07);
+  box-shadow:0 0 24px rgba(0,240,255,.12), inset 0 1px 0 rgba(255,255,255,.06);
+}
+section {
+  max-width:1200px; margin:0 auto;
+  padding:1.8rem 1rem 2.4rem;
+}
+h2.section-title {
+  font-size:1.6rem; font-weight:800; text-align:center; margin-bottom:.4rem;
+  background:linear-gradient(135deg,#fff,rgba(255,255,255,.8));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+p.section-subtitle {
+  text-align:center; color:var(--text-secondary);
+  margin-bottom:1.6rem; font-size:.95rem;
+}
+.glow-line {
+  width:64px; height:3px; margin:.5rem auto 1.4rem;
+  border-radius:3px; background:linear-gradient(90deg,var(--accent),var(--accent-purple));
+  box-shadow:0 0 16px rgba(0,240,255,.5);
+}
+.grid { display:grid; gap:1.1rem; }
+.services { grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+.card {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:20px; padding:1.4rem;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
+  animation: fadeInUp .7s ease both;
+  backdrop-filter:blur(8px);
+}
+.card::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%, rgba(0,240,255,.07), transparent 55%);
+  opacity:0; transition:opacity .4s ease; pointer-events:none;
+}
+.card:hover::before { opacity:1; }
+.card:hover {
+  border-color:rgba(0,240,255,.3);
+  transform:translateY(-4px) scale(1.01);
+  box-shadow:0 20px 40px rgba(0,0,0,.45), var(--shadow-glow);
+}
+.card-header {
+  display:flex; align-items:center; gap:.8rem;
+  margin-bottom:.7rem; position:relative; z-index:1;
+}
+.card-icon {
+  font-size:2rem; filter:drop-shadow(0 0 10px rgba(0,240,255,.4));
+  line-height:1;
+}
+.card-title { font-weight:700; font-size:1.05rem; }
+.card p {
+  color:var(--text-secondary); font-size:.92rem;
+  line-height:1.65; position:relative; z-index:1;
+}
+.card .features {
+  margin-top:.7rem; padding-left:1.2rem;
+  color:var(--text-secondary); font-size:.86rem;
+  line-height:1.85; position:relative; z-index:1;
+}
+.card .features li::marker { color:var(--accent); }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.85rem 1.5rem; border-radius:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  color:#06060e; font-weight:800; font-size:.92rem;
+  text-decoration:none; border:none; cursor:pointer;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 8px 24px rgba(0,240,255,.25);
+  position:relative; overflow:hidden;
+}
+.btn::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.3),transparent 55%);
+  opacity:0; transition:opacity .3s ease;
+}
+.btn:hover::after { opacity:1; }
+.btn:hover {
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 14px 32px rgba(168,85,247,.35);
+}
+.contact-cta { text-align:center; margin:1.8rem 0; }
+.service-btn {
+  display:flex; align-items:center; gap:1rem;
+  padding:1.2rem 1.4rem; border-radius:18px;
+  background:linear-gradient(135deg,rgba(24,24,36,.85),rgba(16,16,26,.75));
+  border:1px solid rgba(255,255,255,.12);
+  color:var(--text-primary); cursor:pointer; text-align:left;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 10px 28px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+  width:100%; position:relative; overflow:hidden;
+  text-decoration:none;
+}
+.service-btn::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(0,240,255,.08),transparent 60%);
+  opacity:0; transition:opacity .4s ease;
+}
+.service-btn:hover::before { opacity:1; }
+.service-btn:hover {
+  border-color:rgba(0,240,255,.45);
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 24px rgba(0,240,255,.1);
+}
+.service-icon { font-size:2rem; filter:drop-shadow(0 0 8px rgba(0,240,255,.4)); flex-shrink:0; }
+.service-body { display:flex; flex-direction:column; gap:.2rem; }
+.service-title { font-weight:700; font-size:1rem; }
+.service-desc { color:var(--text-secondary); font-size:.88rem; line-height:1.5; }
+.service-btn-inventario { border-color:rgba(0,234,255,.3); }
+.service-btn-inventario:hover { border-color:rgba(0,234,255,.6); box-shadow:0 0 28px rgba(0,234,255,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-impresiones { border-color:rgba(176,38,255,.3); }
+.service-btn-impresiones:hover { border-color:rgba(176,38,255,.6); box-shadow:0 0 28px rgba(168,85,247,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-automatizaciones { border-color:rgba(255,80,80,.3); }
+.service-btn-automatizaciones:hover { border-color:rgba(255,80,80,.6); box-shadow:0 0 28px rgba(255,80,80,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-ecommerce { border-color:rgba(0,220,120,.3); }
+.service-btn-ecommerce:hover { border-color:rgba(0,220,120,.6); box-shadow:0 0 28px rgba(0,220,120,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-video { border-color:rgba(255,160,0,.3); }
+.service-btn-video:hover { border-color:rgba(255,160,0,.6); box-shadow:0 0 28px rgba(255,160,0,.15), 0 18px 40px rgba(0,0,0,.45); }
+.service-btn-proyectos { border-color:rgba(255,210,0,.3); }
+.service-btn-proyectos:hover { border-color:rgba(255,210,0,.6); box-shadow:0 0 28px rgba(255,210,0,.15), 0 18px 40px rgba(0,0,0,.45); }
+.social-card {
+  display:flex; align-items:center; gap:1rem;
+  padding:1.2rem 1.4rem; border-radius:20px;
+  background:linear-gradient(135deg,rgba(24,24,36,.88),rgba(16,16,26,.78));
+  border:1px solid rgba(255,255,255,.12);
+  color:var(--text-primary); text-decoration:none;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 10px 28px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+  position:relative; overflow:hidden;
+}
+.social-card:hover { transform:translateY(-4px); }
+.social-icon-wrap {
+  width:52px; height:52px; border-radius:16px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 20px rgba(0,0,0,.35);
+}
+.social-icon { font-size:1.6rem; }
+.social-info { display:flex; flex-direction:column; gap:.15rem; }
+.social-title { font-weight:800; font-size:1.05rem; }
+.social-handle { color:var(--text-secondary); font-size:.88rem; }
+.social-arrow { margin-left:auto; color:var(--text-secondary); font-size:1.3rem; transition:all .3s ease; }
+.social-card:hover .social-arrow { color:#fff; transform:translateX(5px); }
+.tiktok-card:hover { border-color:rgba(255,0,128,.6); box-shadow:0 0 36px rgba(255,0,128,.18), 0 18px 40px rgba(0,0,0,.45); }
+.tiktok-card .social-icon { filter:drop-shadow(0 0 10px rgba(255,0,128,.6)); }
+.facebook-card:hover { border-color:rgba(24,119,242,.6); box-shadow:0 0 36px rgba(24,119,242,.18), 0 18px 40px rgba(0,0,0,.45); }
+.facebook-card .social-icon { filter:drop-shadow(0 0 10px rgba(24,119,242,.6)); }
+.story-card {
+  position:relative; background:rgba(18,16,12,.8);
+  border:1px solid rgba(255,255,255,.1); border-radius:24px;
+  padding:2.2rem 2rem 2.4rem; isolation:isolate; overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 24px 60px rgba(0,0,0,.55);
+}
+.story-card::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.08) 4px),
+             repeating-linear-gradient(90deg,transparent,transparent 3px,rgba(0,0,0,.08) 4px);
+  pointer-events:none; z-index:0;
+}
+.story-card::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(255,210,120,.1),transparent 55%);
+  pointer-events:none; z-index:0;
+}
+.story-mark { position:relative; z-index:1; display:flex; align-items:center; gap:10px; margin:1.2rem 0; }
+.story-mark-line { flex:1; height:1px; background:rgba(255,255,255,.2); box-shadow:0 0 10px rgba(255,210,120,.2); }
+.story-mark-dot { width:10px; height:10px; border-radius:50%; background:var(--accent-gold); box-shadow:0 0 14px rgba(255,215,0,.8); }
+.story-title { position:relative; z-index:1; text-align:center; font-size:1.7rem; font-weight:900; letter-spacing:-.3px; background:linear-gradient(135deg,#fff,rgba(255,255,255,.85)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:1.2rem; filter:drop-shadow(0 0 14px rgba(255,210,120,.3)); }
+.story-text { position:relative; z-index:1; color:var(--text-secondary); font-size:1rem; line-height:1.85; margin-bottom:1rem; text-wrap:pretty; font-style:italic; }
+.story-text strong { color:#fff; font-style:normal; font-weight:700; }
+.back-link {
+  display:inline-flex; align-items:center; gap:.4rem;
+  margin-bottom:1rem; color:var(--accent);
+  font-weight:700; font-size:.95rem;
+  transition:all .25s ease; text-decoration:none;
+}
+.back-link:hover { text-shadow:0 0 14px rgba(0,240,255,.55); transform:translateX(-3px); }
+.footer {
+  text-align:center; padding:1.8rem 1rem;
+  color:var(--text-secondary); font-size:.85rem;
+  border-top:1px solid var(--border); position:relative; z-index:1;
+}
+.footer a.terms-link {
+  display:inline-block; margin-top:.6rem; font-size:.78rem;
+  color:var(--text-secondary); text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:1px;
+  opacity:.8; transition:all .2s ease;
+}
+.footer a.terms-link:hover { color:var(--accent); border-bottom-color:var(--accent); }
+@keyframes barPulse {
+  0%,100% { opacity:.95; transform: scaleY(1); transform-origin: bottom; }
+  50% { opacity:1; transform: scaleY(1.04); transform-origin: bottom; }
+}
+input, textarea {
+  background:rgba(255,255,255,.04); border:1px solid var(--border);
+  border-radius:14px; padding:.8rem 1.1rem;
+  color:var(--text-primary); font-family:inherit; font-size:.95rem;
+  outline:none; transition:all .3s ease; width:100%;
+}
+input:focus, textarea:focus {
+  border-color:rgba(0,240,255,.45);
+  box-shadow:0 0 16px rgba(0,240,255,.1), inset 0 1px 0 rgba(255,255,255,.04);
+  background:rgba(255,255,255,.06);
+}
+::placeholder { color:rgba(148,163,184,.6); }
+@media (max-width:768px) {
+  .logo { font-size:1.8rem; }
+  .services { grid-template-columns:1fr; }
+  nav.main-nav { gap:.3rem; padding:.5rem; }
+  nav.main-nav a { font-size:.8rem; padding:.4rem .8rem; }
+  .story-card { padding:1.6rem 1.2rem; }
+}
+.delay-1 { animation-delay:.05s; }
+.delay-2 { animation-delay:.1s; }
+.delay-3 { animation-delay:.15s; }
+.delay-4 { animation-delay:.2s; }
+.delay-5 { animation-delay:.25s; }
+.delay-6 { animation-delay:.3s; }
+
+/* ===== TERMS PAGE ===== */
+.terms-container {
+  max-width:900px; margin:0 auto;
+  padding:1rem 1rem 3rem;
+  animation: fadeInUp .7s ease both;
+}
+.terms-header {
+  text-align:center; margin-bottom:2rem;
+}
+.terms-header h1 {
+  font-size:1.9rem; font-weight:900;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  margin-bottom:.5rem;
+}
+.terms-header .update-date {
+  color:var(--text-secondary); font-size:.9rem;
+  display:inline-flex; align-items:center; gap:.4rem;
+  background:rgba(0,240,255,.06); border:1px solid rgba(0,240,255,.15);
+  padding:.3rem .9rem; border-radius:999px;
+}
+.terms-section {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:18px; padding:1.6rem;
+  margin-bottom:1.2rem;
+  transition:all .3s ease;
+  animation: fadeInUp .7s ease both;
+}
+.terms-section:hover {
+  border-color:rgba(0,240,255,.2);
+}
+.terms-section h2 {
+  font-size:1.1rem; font-weight:800; color:var(--accent);
+  margin-bottom:.6rem; display:flex; align-items:center; gap:.5rem;
+}
+.terms-section h2 .section-num {
+  width:28px; height:28px; border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-purple));
+  color:#06060e; font-size:.75rem; font-weight:900;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.terms-section p {
+  color:var(--text-secondary); font-size:.93rem;
+  line-height:1.75; margin-bottom:.7rem;
+}
+.terms-section ul {
+  padding-left:1.3rem; margin-bottom:.7rem;
+}
+.terms-section li {
+  color:var(--text-secondary); font-size:.92rem;
+  line-height:1.75; margin-bottom:.35rem;
+}
+.terms-section li::marker { color:var(--accent); }
+.terms-section strong { color:var(--text-primary); font-weight:700; }
+.terms-contact {
+  background:linear-gradient(135deg,rgba(0,240,255,.08),rgba(168,85,247,.06));
+  border:1px solid rgba(0,240,255,.2); border-radius:18px;
+  padding:1.4rem; text-align:center; margin-top:1.5rem;
+}
+.terms-contact h3 {
+  font-size:1.1rem; font-weight:800; margin-bottom:.5rem;
+  color:var(--text-primary);
+}
+.terms-contact p {
+  color:var(--text-secondary); font-size:.9rem; margin-bottom:.8rem;
+}
+.terms-contact .btn { margin-top:.3rem; }
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="content">
+
+<header>
+  <div class="logo">Centro de Servicios Digitales</div>
+  <div class="tagline">Plataforma empresarial de tecnología integral</div>
+</header>
+
+<nav class="main-nav">
+  <a href="index.html">Inicio</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
+
+<section>
+  <div class="terms-container">
+    <a class="back-link" href="index.html">← Volver al inicio</a>
+
+    <div class="terms-header">
+      <h1>Términos y Condiciones</h1>
+      <div class="update-date">📅 Última actualización: Julio 2026</div>
+    </div>
+
+    <div class="terms-section delay-1">
+      <h2><span class="section-num">1</span> Aceptación de los Términos</h2>
+      <p>Al acceder y utilizar los servicios digitales ofrecidos por <strong>Centro de Servicios Digitales</strong>, el usuario acepta expresamente estos Términos y Condiciones en su totalidad, sin reservas ni excepciones. Si no está de acuerdo con alguna parte de estos términos, deberá abstenerse de utilizar nuestros servicios. El uso continuado de la plataforma, sitio web, redes sociales o cualquier canal de comunicación vinculado a nuestro emprendimiento constituye aceptación plena y sin restricciones de todas las disposiciones aquí contenidas.</p>
+    </div>
+
+    <div class="terms-section delay-2">
+      <h2><span class="section-num">2</span> Naturaleza del Emprendimiento</h2>
+      <p><strong>Centro de Servicios Digitales</strong> opera como un emprendimiento independiente de carácter tecnológico y digital, con domicilio en la República Bolivariana de Venezuela, municipio de Cúpira, estado Miranda, dedicado a brindar soluciones tecnológicas a negocios, comercios y usuarios particulares.</p>
+      <p>Se informa expresamente al usuario que:</p>
+      <ul>
+        <li>Los servicios se prestan en calidad de emprendedor independiente y prestador de servicios digitales personales.</li>
+        <li>El usuario reconoce y acepta la naturaleza emprendedora e independiente del prestador de servicios al momento de contratar cualquier producto o servicio.</li>
+      </ul>
+    </div>
+
+    <div class="terms-section delay-3">
+      <h2><span class="section-num">3</span> Descripción de los Servicios y Entregas</h2>
+      <p><strong>Centro de Servicios Digitales</strong> ofrece soluciones de software, asesoría tecnológica, edición de contenido audiovisual, sistemas administrativos, automatizaciones digitales, gestión de inventarios, impresiones, e-commerce y servicios digitales relacionados para papelerías, pequeños negocios y demás usuarios interesados. Todos los servicios se prestan de forma remota, presencial o híbrida según lo acordado entre las partes.</p>
+      <p>Para garantizar el cumplimiento de los tiempos de entrega, el cliente se compromete a suministrar toda la información, textos, imágenes o accesos necesarios al inicio del proyecto. Los plazos de entrega acordados comenzarán a contar únicamente a partir del momento en que el cliente haya realizado el pago inicial y entregado todo el material requerido.</p>
+    </div>
+
+    <div class="terms-section delay-4">
+      <h2><span class="section-num">4</span> Propiedad Intelectual</h2>
+      <p>Todo el contenido, diseños, código fuente, logotipos, marcas, interfaces de usuario, bases de datos, materiales gráficos, textos, imágenes, videos, animaciones y materiales asociados a nuestros servicios son propiedad exclusiva de <strong>Centro de Servicios Digitales</strong> o de sus licenciantes, y están protegidos por las leyes nacionales e internacionales de propiedad intelectual aplicables en Venezuela.</p>
+      <p>Queda estrictamente prohibido:</p>
+      <ul>
+        <li>Copiar, reproducir, distribuir, modificar, descompilar, desensamblar, realizar ingeniería inversa o crear obras derivadas sin autorización escrita y expresa del titular.</li>
+        <li>Utilizar nuestro nombre, logotipo, marca, imagen comercial o identidad visual para fines promocionales, publicitarios o comerciales sin consentimiento previo y por escrito.</li>
+        <li>Utilizar técnicas de scraping, minería de datos, rastreo automatizado o cualquier método de extracción masiva de información sin autorización.</li>
+        <li>Presentar nuestro código, diseño, estructura, metodología o conocimientos técnicos como propios ante terceros.</li>
+        <li>Transferir, sublicenciar, alquilar, vender, comercializar o ceder cualquier parte del servicio, producto o contenido sin autorización expresa.</li>
+      </ul>
+    </div>
+
+    <div class="terms-section delay-1">
+      <h2><span class="section-num">5</span> Uso de la Información y Confidencialidad</h2>
+      <p>Toda la información, archivos y datos de contacto proporcionados por el cliente serán utilizados exclusivamente para la ejecución de los servicios contratados y la comunicación directa sobre su proyecto. Nos comprometemos a mantener la confidencialidad de su material y a no compartirlo ni venderlo a terceros, salvo requerimiento de una autoridad competente.</p>
+      <p>El usuario acepta no divulgar credenciales, contraseñas o claves de acceso a terceros no autorizados. No nos hacemos responsables por filtraciones, pérdidas o usos indebidos de información derivados de negligencia del usuario en la protección de sus propios datos de acceso.</p>
+    </div>
+
+    <div class="terms-section delay-2">
+      <h2><span class="section-num">6</span> Conducta del Usuario</h2>
+      <p>El usuario se compromete a utilizar los servicios de forma lícita, conforme a la moral, las buenas costumbres, el orden público y la legislación venezolana vigente. Queda expresamente prohibido:</p>
+      <ul>
+        <li>Utilizar los servicios para cometer delitos, fraudes, estafas, actividades ilícitas o cualquier conducta contraria a la ley.</li>
+        <li>Intentar acceder sin autorización a sistemas, redes, servidores, bases de datos o archivos vinculados al servicio.</li>
+        <li>Interferir, interrumpir, sobrecargar, dañar o deteriorar la operatividad del servicio, el sitio web o las plataformas asociadas.</li>
+        <li>Enviar, distribuir o alojar virus, malware, código malicioso, spyware, ransomware o cualquier material que pueda dañar equipos o sistemas.</li>
+        <li>Suplantar la identidad de personas naturales o jurídicas, o hacerse pasar por representante de alguna entidad sin autorización.</li>
+        <li>Realizar prácticas comerciales desleales, competencia desleal, difamación, calumnia o injurias contra el emprendimiento o sus prestadores de servicio.</li>
+        <li>Negarse al pago de servicios contratados, incumplir acuerdos de pago o generar obligaciones fraudulentas.</li>
+      </ul>
+    </div>
+
+    <div class="terms-section delay-3">
+      <h2><span class="section-num">7</span> Pagos, Revisiones y Política de Cancelación</h2>
+      <ul>
+        <li><strong>Condiciones de Pago:</strong> Los precios y métodos de pago serán acordados previamente con el cliente antes de iniciar cualquier trabajo. Para proyectos a medida (como desarrollo web, software o edición), se requerirá un anticipo para reservar el cupo e iniciar la ejecución, y el saldo restante deberá pagarse antes de la entrega final o publicación del proyecto. Una vez realizado un pago, se emitirá un recibo digital o constancia de pago interna.</li>
+        <li><strong>Rondas de Revisiones:</strong> Cada servicio incluye hasta <strong>dos (2) rondas de revisiones o ajustes menores</strong> sobre la propuesta presentada, siempre que no cambien la estructura o idea original acordada. Cualquier modificación adicional o fuera del alcance inicial tendrá un costo extra que será cotizado previamente.</li>
+        <li><strong>Inactividad del Cliente:</strong> Si durante el desarrollo de un proyecto el cliente tarda más de <strong>quince (15) días continuos</strong> en enviar material pendiente o aprobar avances, el proyecto pasará a estado de pausa. Si la inactividad supera los <strong>treinta (30) días</strong>, el servicio se dará por cerrado sin derecho a reembolso del anticipo, debido al tiempo y recursos ya invertidos.</li>
+        <li><strong>Reembolsos:</strong> Debido a la naturaleza personalizada de los servicios digitales y de impresión, una vez iniciado el trabajo no se realizarán reembolsos, salvo en caso de imposibilidad comprobada por parte de <strong>Centro de Servicios Digitales</strong> para ejecutar el servicio acordado.</li>
+      </ul>
+    </div>
+
+    <div class="terms-section delay-4">
+      <h2><span class="section-num">8</span> Garantía Limitada de los Servicios</h2>
+      <p><strong>Centro de Servicios Digitales</strong> garantiza que los servicios y desarrollos entregados cumplirán con las especificaciones acordadas previamente con el cliente.</p>
+      <ul>
+        <li><strong>Soporte Post-Entrega:</strong> En servicios de desarrollo web o software, ofrecemos una garantía técnica gratuita de <strong>quince (15) días continuos</strong> posteriores a la entrega final, destinada exclusivamente a corregir errores técnicos o fallos de funcionamiento propios de nuestro trabajo.</li>
+        <li><strong>Exclusiones:</strong> Esta garantía quedará anulada si el cliente o terceros modifican el código, alteran configuraciones, instalan herramientas incompatibles o hacen un uso indebido del sistema entregado. No garantizamos resultados comerciales específicos (como ventas, captación de clientes o posicionamiento), ya que estos dependen de factores externos a nuestro servicio.</li>
+      </ul>
+    </div>
+
+    <div class="terms-section delay-1">
+      <h2><span class="section-num">9</span> Limitación de Responsabilidad</h2>
+      <p>En la máxima medida permitida por la legislación venezolana, <strong>Centro de Servicios Digitales</strong> no será responsable por daños indirectos, incidentales, pérdida de datos, lucro cesante o interrupciones de negocio derivadas del uso o imposibilidad de uso de los servicios entregados, ni por fallos en plataformas de terceros (como proveedores de hosting, dominios, redes sociales o pasarelas de pago).</p>
+      <p>En cualquier caso, la responsabilidad económica máxima de <strong>Centro de Servicios Digitales</strong> frente al cliente por cualquier reclamo relacionado con un servicio contratado estará estrictamente limitada al <strong>100% del monto total efectivamente pagado por el cliente</strong> por ese servicio específico.</p>
+    </div>
+
+    <div class="terms-section delay-2">
+      <h2><span class="section-num">10</span> Indemnización</h2>
+      <p>El usuario acuerda indemnizar, defender y mantener indemne a <strong>Centro de Servicios Digitales</strong>, su titular, colaboradores, proveedores y representantes, frente a cualquier reclamo, demanda, acción legal, daño, pérdida, multa o gasto derivado de:</p>
+      <ul>
+        <li>El uso del servicio por parte del usuario o de terceros autorizados por él.</li>
+        <li>La violación de estos Términos y Condiciones o de cualquier ley aplicable.</li>
+        <li>La violación de derechos de propiedad intelectual, privacidad, imagen o cualquier otro derecho de terceros.</li>
+        <li>Cualquier información, contenido, dato o material transmitido, publicado o almacenado por el usuario a través de nuestros servicios.</li>
+        <li>Negligencia, imprudencia, dolo o conducta ilícita atribuible al usuario.</li>
+      </ul>
+      <p>Esta obligación de indemnización sobrevivirá a la terminación de la relación contractual o de servicios entre las partes.</p>
+    </div>
+
+    <div class="terms-section delay-3">
+      <h2><span class="section-num">11</span> Modificaciones de los Términos y Tarifas</h2>
+      <p>Nos reservamos el derecho de actualizar estos Términos y Condiciones, así como nuestras tarifas y catálogo de servicios, para adaptarnos a mejoras operativas o cambios en el mercado.</p>
+      <p>Cualquier modificación aplicará <strong>únicamente para nuevas contrataciones</strong>. En el caso de clientes que mantengan servicios activos de forma continua (como mantenimiento o soporte mensual), cualquier cambio en las condiciones o tarifas será notificado directamente por WhatsApp o correo electrónico con al menos <strong>quince (15) días de anticipación</strong>.</p>
+    </div>
+
+    <div class="terms-section delay-4">
+      <h2><span class="section-num">12</span> Protección de Datos y Privacidad</h2>
+      <p><strong>Centro de Servicios Digitales</strong> Centro de Servicios Digitales respeta la privacidad de sus usuarios. Este sitio web tiene carácter meramente informativo y no recopila, almacena ni crea bases de datos personales de quienes lo visitan. En caso de que el cliente suministre voluntariamente información de contacto, archivos o material de trabajo a través de nuestros canales directos (como WhatsApp o correo electrónico) para la cotización o ejecución de un servicio, dicha información se utilizará exclusivamente para atender su solicitud y no será guardada, vendida ni compartida con terceros una vez finalizado el trabajo. Si se diera el caso de conservar algún registro de contacto por motivos de soporte o comunicación, el cliente podrá solicitar en cualquier momento su actualización o eliminación definitiva escribiendo a nuestros canales oficiales.</p>
+    </div>
+
+    <div class="terms-section delay-1">
+      <h2><span class="section-num">13</span> Derechos de Autor y Denuncias</h2>
+      <p>Si el usuario considera que algún contenido viola sus derechos de autor, deberá notificarnos por escrito adjuntando la información que acredite fehacientemente la titularidad de los derechos presuntamente infringidos, incluyendo identificación del material, prueba de titularidad, datos de contacto y declaración de buena fe. Nos reservamos el derecho de remover, modificar o mantener el contenido a nuestra sola discreción.</p>
+    </div>
+
+    <div class="terms-section delay-2">
+      <h2><span class="section-num">14</span> Legislación Aplicable y Jurisdicción</h2>
+      <p>Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes vigentes de la <strong>República Bolivariana de Venezuela</strong>, en especial las disposiciones del Código Civil, la Constitución de la República Bolivariana de Venezuela y demás normativa aplicable.</p>
+      <p>Para cualquier controversia, conflicto o reclamación derivada de la interpretación o ejecución de estos Términos que no pueda resolverse de manera amistosa entre las partes, ambas se someten expresamente a la jurisdicción de los <strong>tribunales competentes del estado Miranda, Venezuela</strong>, renunciando a cualquier otro fuero que pudiera corresponderles.</p>
+    </div>
+
+    <div class="terms-section delay-3">
+      <h2><span class="section-num">15</span> Fuerza Mayor y Circunstancias Externas</h2>
+      <p>No seremos responsables por retrasos, incumplimientos, interrupciones o fallas en la prestación de servicios derivados de causas de fuerza mayor, caso fortuito, actos de autoridad, huelgas, disturbios, bloqueos de internet, fallas eléctricas, restricciones gubernamentales, sanciones internacionales, pandemias, desastres naturales, guerras, ciberataques masivos o cualquier otra circunstancia ajena a nuestro control razonable. En tales eventos, quedaremos eximidos de toda responsabilidad en la medida en que dure el impedimento.</p>
+    </div>
+
+    <div class="terms-section delay-4">
+      <h2><span class="section-num">16</span> Disposiciones Varias</h2>
+      <ul>
+        <li>Si alguna disposición de estos Términos es declarada inválida, nula o inaplicable por un tribunal competente, dicha disposición será modificada o eliminada en la medida necesaria para hacerla válida, sin afectar la vigencia y aplicabilidad de las restantes disposiciones.</li>
+        <li>La falta de ejercicio de cualquier derecho o recurso previsto en estos Términos no constituirá renuncia al mismo, ni impedirá su ejercicio posterior.</li>
+        <li>El usuario no podrá ceder, transferir, sublicenciar o disponer de sus derechos u obligaciones derivados de estos Términos sin consentimiento previo, expreso y por escrito del titular del emprendimiento.</li>
+        <li>Estos Términos y Condiciones, junto con cualquier acuerdo comercial específico pactado entre las partes, constituyen el acuerdo íntegro respecto al objeto aquí tratado, y sustituyen cualquier negociación o comunicación previa.</li>
+        <li>Los encabezados de las secciones tienen fines meramente informativos y no afectan la interpretación de las disposiciones.</li>
+      </ul>
+    </div>
+
+    <div class="terms-section delay-1">
+      <h2><span class="section-num">17</span> Aceptación Expresa</h2>
+      <p>Al contratar, pagar, utilizar o acceder a cualquiera de nuestros servicios, el usuario declara expresamente que:</p>
+      <ul>
+        <li>Ha leído, comprendido y aceptado íntegramente estos Términos y Condiciones.</li>
+        <li>Reconoce la naturaleza emprendedora e independiente del prestador de servicios.</li>
+        <li>Acepta las condiciones de pago, rondas de revisión, garantía limitada y límites de responsabilidad aquí establecidos.</li>
+        <li>Se somete a la jurisdicción venezolana establecida en este documento y renuncia a cualquier otro fuero o tribunal.</li>
+      </ul>
+    </div>
+
+    <div class="terms-contact delay-2">
+      <h3>¿Tienes dudas sobre estos términos?</h3>
+      <p>Estamos disponibles para aclarar cualquier inquietud. Contáctanos directamente.</p>
+      <a href="https://wa.me/5804242138320" target="_blank" rel="noopener" class="btn">
+        <span>💬</span> Contactar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div style="font-weight:600;">Centro de Servicios Digitales · 2026</div>
+  <div style="font-size:.8rem;margin-top:.3rem;">Venezuela, Cúpira · Tecnología con propósito</div>
+</footer>
+
+</div>
+
+<script>
+function initMatrix() {
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  const drops = [];
+  const chars = '0123456789ABCDEF';
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  class Drop {
+    constructor() { this.reset(true); }
+    reset(initial) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * -height : -20;
+      this.speed = Math.random() * 1.2 + 0.8;
+      this.char = chars[Math.floor(Math.random() * chars.length)];
+      this.opacity = Math.random() * 0.3 + 0.2;
+      this.size = Math.random() * 4 + 10;
+      this.trail = Math.floor(Math.random() * 5 + 3);
+    }
+    update() {
+      this.y += this.speed;
+      if (this.y > height + 30) this.reset(false);
+      if (Math.random() > 0.99) {
+        this.char = chars[Math.floor(Math.random() * chars.length)];
+      }
+    }
+    draw() {
+      ctx.font = this.size + 'px monospace';
+      ctx.fillStyle = `rgba(0,240,255,${this.opacity})`;
+      ctx.fillText(this.char, this.x, this.y);
+      ctx.fillStyle = `rgba(0,240,255,${this.opacity * 0.22})`;
+      for (let i = 1; i < this.trail; i++) {
+        ctx.fillText(this.char, this.x, this.y - i * 14);
+      }
+    }
+  }
+
+  function init() {
+    resize();
+    const count = width < 768 ? 20 : 40;
+    drops.length = 0;
+    for (let i = 0; i < count; i++) drops.push(new Drop());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    drops.forEach(d => { d.update(); d.draw(); });
+    requestAnimationFrame(animate);
+  }
+
+  init(); animate();
+
+  let timeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      resize();
+      const target = width < 768 ? 20 : 40;
+      while (drops.length > target) drops.pop();
+      while (drops.length < target) drops.push(new Drop());
+    }, 200);
+  });
+}
+initMatrix();
+</script>
+</body>
+</html>
